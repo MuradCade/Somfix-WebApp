@@ -25,13 +25,10 @@ const Logoutclass = async() =>{
 
 const checkAuthState = async() =>{
     onAuthStateChanged(auth,user =>{
-            if(user){
-                window.location = '../dashboard.html';
-            }
-            else{
+            if(!user){
                 window.location = '../index.html';
-
             }
+          
     });
    }
 
