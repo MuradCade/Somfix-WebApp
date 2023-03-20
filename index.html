@@ -1,47 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Login</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <!-- <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin - v2.5.0
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
+
 <body>
+
+  <main>
     <div class="container">
-        <div class="row d-flex justify-content-center mt-5">
-            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                <div class="card py-3 px-2">
-                    <p class="p-2 rounded mb-3 mt-2 bg-danger text-white" id="errormsg" style="display:none"></p>
+
+      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+              <div class="d-flex justify-content-center py-4">
+                <a href="login.html" class="logo d-flex align-items-center w-auto">
+                  <img src="assets/img/somfix-logo.png" style="width:100%; position: relative; top: 4px;">
+                  <span class="d-none d-lg-block">SOMFIX</span>
+                </a>
+              </div><!-- End Logo -->
+
+              <div class="card mb-3">
+
+                <div class="card-body">
+
+                  <div class="pt-4 pb-2">
+                    <h5 class="card-title text-center pb-0 fs-4">Welcome Back !</h5>
+                    <p class="text-center small">Get unlimted access to your account</p>
+                  </div>
+
+                  <form class="row g-3">
+                      <p style="background-color: #F9B5D0;" id="errormsg"></p>
+                    <div class="col-12">
+                      <label for="yourUsername" class="form-label">Username</label>
+                      <div class="input-group">
+                        <input type="text" name="username" class="form-control" id="email" placeholder="Enter username ...">
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="yourPassword" class="form-label">Password</label>
+                      <input type="password" name="password" class="form-control" id="pwd"placeholder='Enter Password...'>
+                    </div>
+
+                    <div class="col-12">
+                      <div class="form-check" style="display: flex; justify-content: space-between;">
+                        <div style="margin-left:10px">
+                          <input class="form-check-input" type="checkbox"  value="true" id="rememberMe">
+                        <label class="form-check-label" for="rememberMe">Remember me</label>
+                        </div>
+                        <div style="margin-right:10px">
+                          <a href="#" style="font-size: 15px;">Forget Password</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <button class="btn btn-primary w-100" id="login">Login</button>
+                    </div>
                   
-                    <form class="myform">
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email" id="email">
-                          </div>
-                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Password" id="pwd">
-                          </div>
-                          <div class="row">
-                              <div class="col-md-6 col-12">
-                                  <div class="form-group form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">remember me</label>
-                                  </div>
-                              </div>
-                              <div class="col-md-6 col-12 bn">forget password</div>
-                          </div>
-                          <div class="form-group mt-3">
-                              <button type="button" class="btn btn-block btn-primary btn-lg" style="font-size: 18px !important;" id="login">Login</button>
-                          </div>
-                    </form>
+                  </form>
+
                 </div>
+              </div>
+
+              <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+                Designed & Developed by <a href="#">somfixteam</a>
+              </div>
+
             </div>
+          </div>
         </div>
+
+      </section>
+
     </div>
-    <script type="module"  src="js/index.js"></script>
+  </main><!-- End #main -->
+
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+  <script type="module" src="assets/js/index.js"></script>
+
 </body>
+
 </html>
