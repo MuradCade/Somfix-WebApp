@@ -267,53 +267,74 @@
       <h1>Dashboard</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="dashboard.html">Company</a></li>
+          <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
           <li class="breadcrumb-item active">View Company</li>
         </ol>
       </nav>
     </div>
+    <div class="row">
+      <div class="col-xxl-12 col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">View Company </h5>
+          <div  class="mb-4">
+            <div class="col-4 d-flex">
+              <input type="text" class="form-control" placeholder="Search by name">
+                  
+              <button class="btn btn-primary" style="position:relative;left:10px;">Search</button>
+            </div>
+          </div>
+            <!-- <p>Use contextual classes <code>.table-primary .table-secondary .table-success .table-danger .table-warning .table-info .table-light .table-dark</code> to color tables, table rows or individual cells.</p> -->
+            <!-- Table Variants -->
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="row">#</th>
+                  <th>Company_Logo</th>
+                  <th>Company_Name</th>
+                  <th>Company_Ceo</th>
+                  <th>Company_Address</th>
+                  <th>Company_phone</th>
+                  <th>Employee_Amount</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>logo</td>
+                  <td>Omaar</td>
+                  <td>muradcade</td>
+                  <td>halane,borama-somaliland</td>
+                  <td>0634564345443</td>
+                  <td>120</td>
+                  <td><button class="btn btn-primary text-white">view</button>&numsp;<button class="btn btn-success">update</button>&numsp;<button class="btn btn-danger">delete</button></td>
+                </tr>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>logo</td>
+                  <td>shifo</td>
+                  <td>yahye</td>
+                  <td>fardaha,borama-somaliland</td>
+                  <td>0634564345443</td>
+                  <td>120</td>
+                  <td><button class="btn btn-primary text-white">view</button>&numsp;<button class="btn btn-success">update</button>&numsp;<button class="btn btn-danger">delete</button></td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- End Table Variants -->
+    
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <!-- <h4>Search By Category</h4> -->
+      </div>
+     </div>
     </main>
 
     <!-- table html code -->
-   <div class="row" style="margin-left: 20%;">
-    <div class="col-xxl-10 col-md-8">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"></h5>
-        <div style="position: relative; left:64%" class="mb-4">
-          <div class="col-4 d-flex">
-            <input type="text" class="form-control" placeholder="Search by name">
-                
-            <button class="btn btn-primary" style="position:relative;left:10px;">Search</button>
-          </div>
-        </div>
-          <!-- <p>Use contextual classes <code>.table-primary .table-secondary .table-success .table-danger .table-warning .table-info .table-light .table-dark</code> to color tables, table rows or individual cells.</p> -->
-          <!-- Table Variants -->
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Class</th>
-                <th scope="col">Heading</th>
-                <th scope="col">Heading</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Default</th>
-                <td>Cell</td>
-                <td>Cell</td>
-              </tr>
-            </tbody>
-          </table>
-          <!-- End Table Variants -->
-  
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <!-- <h4>Search By Category</h4> -->
-    </div>
-   </div>
+   
       <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     
     

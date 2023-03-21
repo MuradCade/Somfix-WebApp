@@ -260,7 +260,75 @@
 
   </aside><!-- End Sidebar-->
 
+  <main id="main" class="main">
 
+    <div class="pagetitle">
+      <h1>Dashboard</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
+          <li class="breadcrumb-item active">View Complain</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="row">
+      <div class="col-xxl-20 col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">View Complain </h5>
+          <div class="mb-4">
+            <div class="col-4 d-flex">
+              <input type="text" class="form-control" placeholder="Search by name">
+                  
+              <button class="btn btn-primary" style="position:relative;left:10px;">Search</button>
+            </div>
+          </div>
+            <!-- <p>Use contextual classes <code>.table-primary .table-secondary .table-success .table-danger .table-warning .table-info .table-light .table-dark</code> to color tables, table rows or individual cells.</p> -->
+            <!-- Table Variants -->
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="row">#</th>
+                  <th>Name</th>
+                  <th>Phone</th>
+                  <th>Recieved Date</th>
+                  <th>Usertype</th>
+                  <th>Complain</th>
+                  <th>Action</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Omar Ali Aadan</td>
+                  <td>09876545</td>
+                  <td>02-03-2023</td>
+                  <td>Customer</td>
+                  <td>Complain blah blah</td>
+                  <td class="d-flex"><button class="btn btn-primary text-white">view</button>&numsp;<button class="btn btn-success">Reply</button>&numsp;<button class="btn btn-danger">delete</button></td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Marwan Ali Aadan</td>
+                  <td>0678876545</td>
+                  <td>12-03-2023</td>
+                  <td>Customer</td>
+                  <td>Complain blah blah</td>
+                  <td class="d-flex"><button class="btn btn-primary text-white">view</button>&numsp;<button class="btn btn-success">Reply</button>&numsp;<button class="btn btn-danger">delete</button></td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- End Table Variants -->
+    
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <!-- <h4>Search By Category</h4> -->
+      </div>
+     </div>
+    </main>
 
       <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
       <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
