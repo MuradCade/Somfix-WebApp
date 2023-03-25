@@ -276,59 +276,41 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title"> Add New Company</h5>
+          <p class="p-2 bg-success text-white" id="success-msg" style="display: none;"></p>
+          <p class="p-2 bg-danger text-white" id="error-msg"style="display: none;"></p>
+         <form>
           <div class="container mb-3">
-                <label class="form-label"><strong>Company Name</strong></label>
-                <input type="text" class="form-control" placeholder="Enter company name...">
+            <label class="form-label"><strong>Company Name</strong></label>
+            <input type="text" class="form-control" id="companyname" placeholder="Enter company name...">
           </div>
           <div class="container mb-3">
                 <label class="form-label"><strong>Company Logo</strong></label>
-                <input type="file" class="form-control">
+                <input type="file" class="form-control" id="companylogo">
           </div>
           <div class="container mb-3">
             <label class="form-label"><strong>Company Address</strong></label>
-            <input type="text" class="form-control" placeholder="Enter company Address...">
+            <input type="text" class="form-control" id="companyaddress" placeholder="Enter company Address...">
           </div>
           <div class="container mb-3">
             <label class="form-label"><strong>Company Ceo Name</strong></label>
-            <input type="text" class="form-control" placeholder="Enter company ceo name...">
+            <input type="text" class="form-control"id="ceoname"  placeholder="Enter company ceo name...">
           </div>
           <div class="container mb-3">
             <label class="form-label"><strong>Company Phone</strong></label>
-            <input type="phone" class="form-control" placeholder="Enter company Address...">
+            <input type="phone" class="form-control"  id="companyphone"  placeholder="Enter company Address...">
           </div>
           <div class="container mb-3">
             <label class="form-label"><strong>Employee Amount</strong></label>
-            <input type="text" class="form-control" placeholder="Enter employee amount ...">
+            <input type="text" class="form-control" id="employeamount" placeholder="Enter employee amount ...">
           </div>
           <div class="container mb-3">
             <label class="form-label"><strong>Company description</strong></label>
-            <textarea class="form-control" cols="20" rows="4" placeholder="Enter company description..."></textarea>
+            <textarea class="form-control" id="companydesc"  cols="20" rows="4" placeholder="Enter company description..."></textarea>
           </div>
-          <!-- <div class="container mb-3">
-            <label class="form-label"><strong>Subscription Type</strong></label>
-            <select class="form-select">
-              <option value="">Select Subscription Type</option>
-              <option value="free-trail">Free 7-days trial</option>
-              <option value="monthly">$49/monthly</option>
-              <option value="yearly">$75/yearly</option>
-            </select>
-          </div> -->
-          <!-- <div class="container mb-3">
-            <label class="form-label"><strong>Subscription total amount</strong></label>
-            <input type="text" class="form-control" readonly value="0">
-          </div>
-          <div class="container mb-3">
-            <label class="form-label"><strong>Subscription started date</strong></label>
-            <input type="date" class="form-control">
-          </div>
-          <div class="container mb-3">
-            <label class="form-label"><strong>Subscription end date</strong></label>
-            <input type="date" class="form-control" readonly>
-          </div>
-        </div> -->
         <div class="text-center mb-3">
-          <button class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary" id="submitbtn">Submit</button>
         </div>
+         </form>
       </div>
     </div>
     
@@ -338,8 +320,8 @@
       <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
      
     
-      <!-- Template Main JS File -->
-      <script src="assets/js/main.js"></script>
+      <!-- add data JS File -->
+      <script  type="module"  src="assets/js/adddata.js"></script>
     
 </body>
 </html>

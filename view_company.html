@@ -299,27 +299,8 @@
                   <th>Action</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>logo</td>
-                  <td>Omaar</td>
-                  <td>muradcade</td>
-                  <td>halane,borama-somaliland</td>
-                  <td>0634564345443</td>
-                  <td>120</td>
-                  <td><button class="btn btn-primary text-white">view</button>&numsp;<button class="btn btn-success">update</button>&numsp;<button class="btn btn-danger">delete</button></td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>logo</td>
-                  <td>shifo</td>
-                  <td>yahye</td>
-                  <td>fardaha,borama-somaliland</td>
-                  <td>0634564345443</td>
-                  <td>120</td>
-                  <td><button class="btn btn-primary text-white">view</button>&numsp;<button class="btn btn-success">update</button>&numsp;<button class="btn btn-danger">delete</button></td>
-                </tr>
+              <tbody  id="displaydata">
+                
               </tbody>
             </table>
             <!-- End Table Variants -->
@@ -333,13 +314,47 @@
      </div>
     </main>
 
-    <!-- table html code -->
+    <!-- Start view model -->
+    <div class="modal fade" id="basicModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-bold"><strong>View Company Data</strong></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <div class="card">
+                Comapany logo <br>
+                Company Name <br>
+                Company Ceo 
+                Company Address <br>
+                Company Phone <br>
+                Employee Amount <br>
+                Company Descriptions <br>
+                Subscription Status (view detials only)
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div><!-- End Basic Modal-->
+    <!-- End view model -->
+
+
+      <!-- Start update model -->
+    <!-- End update model -->
+
+          <!-- Start delete model -->
+    <!-- End delete model -->
    
       <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     
     
-      <!-- Template Main JS File -->
-      <script src="assets/js/main.js"></script>
+      <!--   viewdata  JS File -->
+      <script  type="module"  src="assets/js/viewdata.js"></script>
     
 </body>
 </html>
