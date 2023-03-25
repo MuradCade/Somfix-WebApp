@@ -18,21 +18,7 @@ const errormsg = document.querySelector('#errormsg');
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-//    const Signup = async() =>{
-//        const loginwithemail = email.value;
-//        const loginwithpassword = password.value;
 
-//        createUserWithEmailAndPassword(auth,loginwithemail,loginwithpassword).then((usercredential)=>{
-//            const user = usercredential.user;
-//            console.log(user);
-//        }).catch((error) =>{
-           
-//            console.log('Error Code'+ errorcode);
-//            console.log('Error Message'+ errormessage);
-
-//        });
-
-//    }
    // Login user
    const Loginfunction = async() =>{
        const loginwithemail = email.value;

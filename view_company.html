@@ -244,13 +244,7 @@
           <span>Transection Report</span>
         </a>
       </li><!-- End Login Page Nav -->
-<!-- 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-error-404.html">
-          <i class="bi bi-dash-circle"></i>
-          <span>Total Payment</span>
-        </a>
-      </li>End Error 404 Page Nav -->
+
 
 
     </ul>
@@ -273,7 +267,28 @@
       </nav>
     </div>
     <div class="row">
-      <div class="col-xxl-12 col-md-12">
+      <div class="col-xxl-12 col-md-12" id="viewdata" style="display:none">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">View Particular Company Data</h5>
+            <div class="mb-4">
+              <p>Comapnay Logo : &numsp;<span id="logo" style="font-size: 18px;"></span></p>
+              <p>Comapnay Name :  &numsp;<span id="companyname" style="font-size: 18px;"></span></p>
+              <p>Ceo Name :   &numsp;<span id='ceoname' style="font-size: 18px;"></span></p>
+              <p>Company Address :   &numsp;<span id="address" style="font-size: 18px;"></span></p>
+              <p>Company Phone :  &numsp; <span id="phone" style="font-size: 18px;"></span></p>
+              <p>Employee Amount :  &numsp; <span id="employee" style="font-size: 18px;"></span></p>
+              <p>Company Description :  &numsp; <span id="desc" class="text-justify" style="font-size: 18px;"></span></p>
+              <div class="text-start">
+                <a href="view_company.html" class="btn btn-primary">Go Back</a>
+              </div>
+            </div>
+          </div>
+        </div>
+              
+              
+      </div>
+      <div class="col-xxl-12 col-md-12" id="viewtable">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">View Company </h5>
@@ -308,53 +323,19 @@
           </div>
         </div>
       </div>
-      <div class="col">
-        <!-- <h4>Search By Category</h4> -->
-      </div>
      </div>
     </main>
-
-    <!-- Start view model -->
-    <div class="modal fade" id="basicModal" tabindex="-1">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title text-bold"><strong>View Company Data</strong></h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-              <div class="card">
-                Comapany logo <br>
-                Company Name <br>
-                Company Ceo 
-                Company Address <br>
-                Company Phone <br>
-                Employee Amount <br>
-                Company Descriptions <br>
-                Subscription Status (view detials only)
-              </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div><!-- End Basic Modal-->
-    <!-- End view model -->
-
-
-      <!-- Start update model -->
-    <!-- End update model -->
-
-          <!-- Start delete model -->
-    <!-- End delete model -->
+    
+   
    
       <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     
     
       <!--   viewdata  JS File -->
       <script  type="module"  src="assets/js/viewdata.js"></script>
+      <script   src="assets/js/main.js"></script>
+
+      
     
 </body>
 </html>
