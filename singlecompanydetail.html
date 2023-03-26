@@ -247,9 +247,6 @@
   </aside><!-- End Sidebar-->
 
 
-  
-  <!-- indicator of the location navigation -->
-  
   <main id="main" class="main">
 
     <div class="pagetitle">
@@ -257,61 +254,45 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
-          <li class="breadcrumb-item active">View Company</li>
+          <li class="breadcrumb-item active">View Particular Comapny Details</li>
         </ol>
       </nav>
     </div>
     <div class="row">
-      <div class="col-xxl-12 col-md-12" id="viewtable">
+      <div class="col-xxl-12 col-md-12" id="viewdata">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">View Company </h5>
-          <div  class="mb-4">
-            <div class="col-4 d-flex">
-              <input type="text" class="form-control" placeholder="Search by name">
-                  
-              <button class="btn btn-primary" style="position:relative;left:10px;">Search</button>
+            <h5 class="card-title">View Particular Company Data</h5>
+            <div class="mb-4">
+              <p>Comapnay Logo : &numsp;<span id="logo" style="font-size: 18px;"></span></p>
+              <p>Comapnay Name :  &numsp;<span id="companyname" style="font-size: 18px;"></span></p>
+              <p>Ceo Name :   &numsp;<span id='ceoname' style="font-size: 18px;"></span></p>
+              <p>Company Address :   &numsp;<span id="address" style="font-size: 18px;"></span></p>
+              <p>Company Phone :  &numsp; <span id="phone" style="font-size: 18px;"></span></p>
+              <p>Employee Amount :  &numsp; <span id="employee" style="font-size: 18px;"></span></p>
+              <p>Company Description :  &numsp; <span id="desc" class="text-justify" style="font-size: 18px;"></span></p>
+              <div class="text-start">
+                <a href="view_company.html" class="btn btn-primary">Go Back</a>
+              </div>
             </div>
           </div>
-            <!-- <p>Use contextual classes <code>.table-primary .table-secondary .table-success .table-danger .table-warning .table-info .table-light .table-dark</code> to color tables, table rows or individual cells.</p> -->
-            <!-- Table Variants -->
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="row">#</th>
-                  <th>Company_Logo</th>
-                  <th>Company_Name</th>
-                  <th>Company_Ceo</th>
-                  <th>Company_Address</th>
-                  <th>Company_phone</th>
-                  <th>Employee_Amount</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody  id="displaydata">
-                
-              </tbody>
-            </table>
-            <!-- End Table Variants -->
-    
-          </div>
-        </div>
+        </div> 
       </div>
-     </div>
+    </div>
     </main>
-    
-   
-   
-      <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    
-    
-      <!--   viewdata  JS File -->
-      <script   src="assets/js/main.js"></script>
-      <script  type="module"  src="assets/js/viewdata.js"></script>
-      <script type="module" src="assets/js/checkstate.js"></script>
-      <script type="module" src="assets/js/logout.js"></script>
 
-      
+
+
+
+     
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     
-</body>
-</html>
+    
+    <!--   viewdata  JS File -->
+    <script   src="assets/js/main.js"></script>
+    <script  type="module"  src="assets/js/viewdata.js"></script>
+    <script type="module" src="assets/js/checkstate.js"></script>
+    <script type="module" src="assets/js/logout.js"></script>
+
+    </body>
+    </html>

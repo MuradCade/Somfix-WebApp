@@ -247,9 +247,6 @@
   </aside><!-- End Sidebar-->
 
 
-  
-  <!-- indicator of the location navigation -->
-  
   <main id="main" class="main">
 
     <div class="pagetitle">
@@ -257,61 +254,70 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
-          <li class="breadcrumb-item active">View Company</li>
+          <li class="breadcrumb-item active">Update Form</li>
         </ol>
       </nav>
     </div>
     <div class="row">
-      <div class="col-xxl-12 col-md-12" id="viewtable">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">View Company </h5>
-          <div  class="mb-4">
-            <div class="col-4 d-flex">
-              <input type="text" class="form-control" placeholder="Search by name">
-                  
-              <button class="btn btn-primary" style="position:relative;left:10px;">Search</button>
+        <div class="col-xxl-12 col-md-12" id="updateform">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Update Form</h5>
+                <div class="mb-4">
+                  <form>
+                    <div class="container mb-3">
+                      <label class="form-label"><strong>Company Name</strong></label>
+                      <input type="text" class="form-control" id="companyname" placeholder="Enter company name...">
+                    </div>
+                    <div class="container mb-3">
+                          <label class="form-label"><strong>Company Logo</strong></label>
+                          <input type="file" class="form-control" id="companylogo">
+                    </div>
+                    <div class="container mb-3">
+                      <label class="form-label"><strong>Company Address</strong></label>
+                      <input type="text" class="form-control" id="companyaddress" placeholder="Enter company Address...">
+                    </div>
+                    <div class="container mb-3">
+                      <label class="form-label"><strong>Company Ceo Name</strong></label>
+                      <input type="text" class="form-control"id="ceoname"  placeholder="Enter company ceo name...">
+                    </div>
+                    <div class="container mb-3">
+                      <label class="form-label"><strong>Company Phone</strong></label>
+                      <input type="phone" class="form-control"  id="companyphone"  placeholder="Enter company Address...">
+                    </div>
+                    <div class="container mb-3">
+                      <label class="form-label"><strong>Employee Amount</strong></label>
+                      <input type="text" class="form-control" id="employeamount" placeholder="Enter employee amount ...">
+                    </div>
+                    <div class="container mb-3">
+                      <label class="form-label"><strong>Company description</strong></label>
+                      <textarea class="form-control" id="companydesc"  cols="20" rows="4" placeholder="Enter company description..."></textarea>
+                    </div>
+                  <div class="text-center mb-3">
+                      <a type="submit" class="btn btn-outline-secondary" href="view_company.html">Cancel</a>
+                    <button type="submit" class="btn btn-primary" id="submitbtn">Submit</button>
+                  </div>
+                   </form>
+                </div>
+              </div>
             </div>
-          </div>
-            <!-- <p>Use contextual classes <code>.table-primary .table-secondary .table-success .table-danger .table-warning .table-info .table-light .table-dark</code> to color tables, table rows or individual cells.</p> -->
-            <!-- Table Variants -->
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="row">#</th>
-                  <th>Company_Logo</th>
-                  <th>Company_Name</th>
-                  <th>Company_Ceo</th>
-                  <th>Company_Address</th>
-                  <th>Company_phone</th>
-                  <th>Employee_Amount</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody  id="displaydata">
-                
-              </tbody>
-            </table>
-            <!-- End Table Variants -->
     
           </div>
-        </div>
-      </div>
-     </div>
+    </div>
     </main>
-    
-   
-   
-      <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    
-    
-      <!--   viewdata  JS File -->
-      <script   src="assets/js/main.js"></script>
-      <script  type="module"  src="assets/js/viewdata.js"></script>
-      <script type="module" src="assets/js/checkstate.js"></script>
-      <script type="module" src="assets/js/logout.js"></script>
 
-      
+
+
+
+     
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     
-</body>
-</html>
+    
+    <!--   viewdata  JS File -->
+    <script   src="assets/js/main.js"></script>
+    <script  type="module"  src="assets/js/viewdata.js"></script>
+    <script type="module" src="assets/js/checkstate.js"></script>
+    <script type="module" src="assets/js/logout.js"></script>
+
+    </body>
+    </html>

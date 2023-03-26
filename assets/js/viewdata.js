@@ -41,7 +41,7 @@ let tr = document.querySelector('#displaydata');
         <td>${doc.data().companyaddress}</td>
         <td>${doc.data().companyphone}</td>
         <td>${doc.data().employeamount}</td>
-        <td><a href="../../view_company.html?view=${doc.id}" class='btn btn-primary'>View</a></td>
+        <td><a href="../../singlecompanydetail.html?view=${doc.id}" class='btn btn-primary'>View</a>&numsp;<a href='updatesignlecompanydetails.html?update=${doc.id}' class='btn btn-success'>Update</a></td>
         </tr>
         
     `;
@@ -73,8 +73,10 @@ function displayselectdata () {
     // get the last of the url start from ? symbol
     let url = window.location.search;
 
-    // check if the url contains world view
+    // check if the url contains word view and have id
     let check = url.search('view');
+    // check if the url contains word update and have id
+    let updateurl = url.search('update');
       // intialize input model variables comes fomt view
       let displaycompanylogo = document.getElementById('logo');
       let companyname = document.getElementById('companyname');
@@ -86,28 +88,11 @@ function displayselectdata () {
     //   get the id from url by slicing it  (uid is company id)
       let uid = url.slice(6,26);
 
-      // view data of particular company
-      let viewdata = document.querySelector('#viewdata');
-        
-      // display data means when view company page gets visit we should display the table of data
-      let displaydata = document.querySelector('#viewtable')   
+    
 
-      if(check == 1){
-        viewdata.style.display='block';
-        // console.log(uid);
-        displaydata.style.display='none'
-    }
-    else if(check == -1){
-        viewdata.style.display='none'
-        displaydata.style.display='block'
-        // console.log(check);
-    }
-    else{
-        viewdata.style.display='none'
-        // console.log(check);
-
-      }
-
+    
+    
+   
       
     
        // read the company collection for particular clicked id (company id)
@@ -137,8 +122,19 @@ function displayselectdata () {
 
     }
 
+    // update singlecompany details
+    function updatesinglecompanydetails()
+    {
+        // put update logic here
+        alert('update word found in url');
+    }
 
-    ViewData();
+    // run functions based on web browser
+    if(check == 1){
+        ViewData();
+    }
+    else if(updateurl == 1){
+    }
 
     
   }
