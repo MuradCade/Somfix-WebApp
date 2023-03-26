@@ -32,3 +32,12 @@ Download this repo and unzip the folder then configure the following
 
 Thats all for the Somfixwebapp installation
 ```
+
+
+## Thing that compeleted
+     - add company | done
+     - view company | done
+     - view specific company | done
+     - logout feature | done
+     - admin &company dashboard designed | done
+     

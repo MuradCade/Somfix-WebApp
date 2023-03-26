@@ -20,7 +20,7 @@ const logout_btn = document.querySelector('#logout');
 const Logoutclass = async() =>{
         await signOut(auth);
         console.log('logout success');
-        window.location = '../index.html';
+        window.location.href = 'index.html';
 }
 
 
