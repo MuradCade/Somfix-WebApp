@@ -76,6 +76,3 @@
 
     }
 
-    // view(display data from company collection)
-    // update data from company collection
-    // delete single field company data

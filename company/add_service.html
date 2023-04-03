@@ -133,17 +133,22 @@
       <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
           <a href="add_service.html" style="background-color: #F6F9FF;">
-            <i class="bi bi-circle"></i><span>Assign Services</span>
+            <i class="bi bi-circle"></i><span>Create Services</span>
           </a>
         </li>
         <li>
           <a href="view_service.html">
-            <i class="bi bi-circle"></i><span>View Services</span>
+            <i class="bi bi-circle"></i><span>View Requested Services</span>
           </a>
         </li>
         <li>
           <a href="service_report.html">
-            <i class="bi bi-circle"></i><span>Service Reports</span>
+            <i class="bi bi-circle"></i><span>Create Service Category</span>
+          </a>
+        </li>
+        <li>
+          <a href="viewservicecategory.html">
+            <i class="bi bi-circle"></i><span>View Service Category</span>
           </a>
         </li>
       </ul>
@@ -199,7 +204,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
-          <li class="breadcrumb-item active">Assign New Service</li>
+          <li class="breadcrumb-item active">Create New Service</li>
         </ol>
       </nav>
     </div>
@@ -207,31 +212,44 @@
     <div class="container">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title"> Assign New Service</h5>
-          <div class="container mb-3">
-                <label class="form-label"><strong>Service Name</strong></label>
-                <!-- <input type="text" class="form-control" placeholder="Enter Service Name..."> -->
-                <select class="form-select">
-                  <option value="">Select Service</option>
-                  <option value="">Plumber</option>
-                  <option value="">Electrician</option>
-                </select>
-          </div>
-          <div class="container mb-3">
-                <label class="form-label"><strong>Service Providers</strong></label>
-                <select class="form-select">
-                  <option value="">Select Service Provider</option>
-                  <option value="company&employe">employee 1</option>
-                  <option value="company&employe">employee 2</option>
-                </select>
-          </div>
-          <div class="container mb-3">
-            <label class="form-label"><strong>Service Assigned Date</strong></label>
-            <input type="date" class="form-control">
-      </div>
-        <div class="text-center mb-3">
-          <button class="btn btn-primary">Submit</button>
+          <h5 class="card-title"> Create New Service</h5>
+          <form>
+            <div class="container mb-3">
+              <label class="form-label"><strong>Service Name</strong></label>
+              <input type="text" id="servicename" class="form-control" placeholder="Enter Service Name">     
         </div>
+        <div class="container mb-3">
+              <label class="form-label"><strong>Service Providers</strong></label>
+              <select class="form-select" id="serviceprovider">
+                <option selected>Select Service Provider</option>
+                <option value="company&employe">employee 1</option>
+                <option value="company&employe">employee 2</option>
+              </select>
+        </div>
+        <div class="container mb-3">
+          <label class="form-label"><strong>Service Category</strong></label>
+          <select class="form-select" id="servicecategory">
+            <option selected>Select Service Category</option>
+            <option value="company&employe">Plumber </option>
+            <option value="company&employe">Elecrician </option>
+          </select>      
+        </div>
+        <div class="container mb-3">
+          <label class="form-label"><strong>Service Price</strong></label>
+          <input type="text" id="serviceprice" class="form-control" placeholder="Enter Service Price">     
+        </div>
+        <div class="container mb-3">
+          <label class="form-label"><strong>Customer Name</strong></label>
+          <input type="text" class="form-control" placeholder="Customer Name">     
+        </div>
+        <div class="container mb-3">
+          <label class="form-label"><strong>Service Requested Date</strong></label>
+          <input type="date" class="form-control" id="Requesteddate">
+        </div>
+      <div class="text-center mb-3">
+        <button class="btn btn-primary" id="submit">Submit</button>
+      </div>
+          </form>
       </div>
     </div>
     </div>
@@ -242,6 +260,7 @@
     
       <!-- Template Main JS File -->
       <script src="../assets/js/main.js"></script>
+      <script type="module" src="js/createservice.js"></script>
     
 </body>
 </html>

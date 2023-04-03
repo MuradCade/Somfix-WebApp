@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New Employee</title>
+    <title>View Company</title>
       <!-- Favicons -->
-        <link href="../../assets/img/favicon.png" rel="icon">
-        <link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+        <link href="../assets/img/favicon.png" rel="icon">
+        <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
         <!-- Google Fonts -->
         <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -17,7 +17,7 @@
         <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
         <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-      
+ 
 
         <link href="../assets/css/style.css" rel="stylesheet">
 </head>
@@ -87,6 +87,8 @@
             <li>
               <hr class="dropdown-divider">
             </li>
+           
+
           </ul><!-- End Profile Dropdown Items -->
         </li><!-- End Profile Nav -->
 
@@ -112,12 +114,12 @@
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="add_employee.html" style="background-color: #F6F9FF;">
+            <a href="add_employee.html" >
               <i class="bi bi-circle"></i><span>Add Employee</span>
             </a>
           </li>
           <li>
-            <a href="view_employee.html">
+            <a href="view_employee.html" style="background-color: #F6F9FF;">
               <i class="bi bi-circle"></i><span>View Employee</span>
             </a>
           </li>
@@ -194,6 +196,7 @@
 
   </aside><!-- End Sidebar-->
 
+
   <main id="main" class="main">
 
     <div class="pagetitle">
@@ -201,92 +204,50 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
-          <li class="breadcrumb-item active">Add New Employee</li>
+          <li class="breadcrumb-item active">View Particular Comapny Details</li>
         </ol>
-      </nav> 
+      </nav>
     </div>
-
-    <div class="container">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"> Add New Employee</h5>
-         <form>
-          <p class="p-2 bg-success text-white" id="success-msg" style="display: none;"></p>
-          <p class="p-2 bg-danger text-white" id="error-msg"style="display: none;"></p>
-          <div class="container mb-3">
-                <label class="form-label"><strong>Employe Fullname</strong></label>
-                <input type="text" id="fullname" class="form-control" placeholder="Enter Employe Name...">
+    <div class="row">
+      <div class="col-xxl-12 col-md-12" id="viewdata">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">View Particular Company Data</h5>
+            <div class="mb-4">
+              <p class="text-center" id="loading"></p>
+              <p>Employee Profile Img : &numsp;<span id="img" style="font-size: 18px;"></span></p>
+              <p>Employee Fullname :  &numsp;<span id="fullname" style="font-size: 18px;"></span></p>
+              <p>Employee Age :   &numsp;<span id="age" style="font-size: 18px;"></span></p>
+              <p>Employee Gender :   &numsp;<span id="gender" style="font-size: 18px;"></span></p>
+              <p>Employee Dob :   &numsp;<span id="dob" style="font-size: 18px;"></span></p>
+              <p>Employee Phone :  &numsp; <span id="phone" style="font-size: 18px;"></span></p>
+              <p>Employee Country :  &numsp; <span id="Country" style="font-size: 18px;"></span></p>
+              <p>Employee Address :  &numsp; <span id="address" class="text-justify" style="font-size: 18px;"></span></p>
+              <p>Service Type :  &numsp; <span id="servicetype" class="text-justify" style="font-size: 18px;"></span></p>
+              <p>Employee Certificate :  &numsp; <span id="certificate" class="text-justify" style="font-size: 18px;"></span></p>
+              <p>Employee Expreince :  &numsp; <span id="expreince" class="text-justify" style="font-size: 18px;"></span></p>
+              <p>Company Associated With :  &numsp; <span id="companyassociatedwith" class="text-justify" style="font-size: 18px;"></span></p>
+              <div class="text-start">
+                <a href="view_employee.html" class="btn btn-primary">Go Back</a>
+              </div>
+            </div>
           </div>
-          <div class="container mb-3">
-                <label class="form-label"><strong>Employe Img</strong></label>
-                <input type="file" id="img" class="form-control">
-          </div>
-          <div class="container mb-3">
-            <label class="form-label"><strong>Employe Age</strong></label>
-            <input type="text" id="age" class="form-control" placeholder="Enter Employe Age...">
-          </div>
-          <div class="container mb-3">
-            <label class="form-label"><strong>Employe Gender</strong></label>
-            <select class="form-select" id="gender">
-              <option selected>Select gender</option>
-              <option value="male">male</option>
-              <option value="female">female</option>
-            </select>
-          </div>
-          <div class="container mb-3">
-            <label class="form-label"><strong>Employe Dob</strong></label>
-            <input type="date" class="form-control" id="dob">
-          </div>
-          <div class="container mb-3">
-            <label class="form-label"><strong>Employe Phone</strong></label>
-            <input type="phone"id="phone" class="form-control" placeholder="Enter Employe Phone...">
-          </div>
-          <div class="container mb-3">
-            <label class="form-label"><strong>Country</strong></label>
-            <input type="phone"  id="country" class="form-control" placeholder="Enter Country...">
-          </div>
-          <div class="container mb-3">
-            <label class="form-label"><strong>Address</strong></label>
-            <input type="phone" id="address" class="form-control" placeholder="Enter  Address...">
-          </div>
-          <div class="container mb-3">
-            <label class="form-label"><strong>Service Type</strong></label>
-            <select class="form-select" id="service_category">
-              <option selected>Select Service Type </option>
-              <option value="plumber">plumber</option>
-              <option value="handyman">handyman</option>
-            </select>
-          </div>
-          <div class="container mb-3">
-            <label class="form-label"><strong>Employe Certificate</strong></label>
-            <input type="file" class="form-control" id="certificate">
-          </div>
-          <div class="container mb-3">
-            <label class="form-label"><strong>Employe Experience</strong></label>
-            <input type="text" id="experience" class="form-control" placeholder="Enter Employe Experience ...">
-          </div>
-          <div class="container mb-3">
-            <label class="form-label"><strong>Employe company_associated</strong></label>
-            <select class="form-select" id="company-associated">
-              <option selected>Select company_associated with</option>
-              <option value="Freelancer">Freelancer</option>
-              <option value="Company">Company</option>
-            </select>
-          </div>
-        <div class="text-center mb-3">
-          <button type="button" class="btn btn-primary" id="submit">Submit</button>
-        </div>
-         </form>
+        </div> 
       </div>
-    </div>
     </div>
     </main>
 
-      <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
- 
+
+
+
+     
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     
-      <!-- Template Main JS File -->
-      <script type="module" src="js/add-employee.js"></script>
     
-</body>
-</html>
+    <!--   viewdata  JS File -->
+    <script   src="../assets/js/main.js"></script>
+    <script  type="module"  src="js/viewsingleemployeedata.js"></script>
+   
+
+    </body>
+    </html>

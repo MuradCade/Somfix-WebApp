@@ -133,17 +133,22 @@
       <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
           <a href="add_service.html">
-            <i class="bi bi-circle"></i><span>Assign Services</span>
+            <i class="bi bi-circle"></i><span>Create Services</span>
           </a>
         </li>
         <li>
           <a href="view_service.html">
-            <i class="bi bi-circle"></i><span>View Services</span>
+            <i class="bi bi-circle"></i><span>View Requested Services</span>
           </a>
         </li>
         <li>
-          <a href="service_report.html"  style="background-color: #F6F9FF;">
-            <i class="bi bi-circle"></i><span>Service Reports</span>
+          <a href="service_report.html"style="background-color: #F6F9FF;">
+            <i class="bi bi-circle"></i><span>Create Service Category</span>
+          </a>
+        </li>
+        <li>
+          <a href="viewservicecategory.html">
+            <i class="bi bi-circle"></i><span>View Service Category</span>
           </a>
         </li>
       </ul>
@@ -179,13 +184,7 @@
         <span>Logout</span>
       </a>
     </li><!-- End Login Page Nav -->
-<!-- 
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="pages-error-404.html">
-        <i class="bi bi-dash-circle"></i>
-        <span>Total Payment</span>
-      </a>
-    </li>End Error 404 Page Nav -->
+
 
 
   </ul>
@@ -202,70 +201,32 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
-          <li class="breadcrumb-item active">Service Report</li>
+          <li class="breadcrumb-item active">Add New Service Category</li>
         </ol>
       </nav>
     </div>
-    <div class="row">
-      <div class="col-xxl-12 col-md-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Service Report</h5>
-          <div class="mb-4">
-            <div class="col-4 d-flex">
-              <input type="text" class="form-control" placeholder="Search">
-                  
-              <button class="btn btn-primary" style="position:relative;left:10px;">Search</button>
-            </div>
-          </div>
-            <!-- <p>Use contextual classes <code>.table-primary .table-secondary .table-success .table-danger .table-warning .table-info .table-light .table-dark</code> to color tables, table rows or individual cells.</p> -->
-            <!-- Table Variants -->
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="row">#</th>
-                  <th>Service_Name</th>
-                  <th>Service_Providers</th>
-                  <th>Assinged_Date</th>
-                  <th>Service_Status</th>
-                  <th>Action</th>
-                  
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Handyman</td>
-                  <td>Employee1</td>
-                  <td>23-03-2023</td>
-                  <td><button class="btn btn-info text-white">On-going</button></td>
-                  <td class="d-flex"><button class="btn btn-primary text-white">view</button></td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Electrician</td>
-                  <td>Employee2</td>
-                  <td>22-03-2023</td>
-                  <td><button class="btn btn-danger text-white">Cancelled</button></td>
-                  <td class="d-flex"><button class="btn btn-primary text-white">view</button></td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Plumber</td>
-                  <td>Company & Employee</td>
-                  <td>21-03-2023</td>
-                  <td><button class="btn btn-success text-white">Compeleted</button></td>
-                  <td class="d-flex"><button class="btn btn-primary text-white">view</button></td>
-                </tr>
-              </tbody>
-            </table>
-            <!-- End Table Variants -->
-    
-          </div>
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"> Add New Service Category</h5>
+          <p class="p-2 bg-success text-white" id="success-msg" style="display: none;"></p>
+          <p class="p-2 bg-danger text-white" id="error-msg"style="display: none;"></p>
+          <form>
+            <div class="container mb-3">
+              <label class="form-label"><strong>Service Name</strong></label>
+              <input type="text"  id="servicename" class="form-control" placeholder="Enter Service Category Name...">      
+        </div>
+        <div class="container mb-3">
+              <label class="form-label"><strong>Service Added Date</strong></label>
+              <input type="date" class="form-control" id="added-date">      
+        </div>
+          </form>
+        <div class="text-center mb-3">
+          <button class="btn btn-primary" id="submit">Submit</button>
         </div>
       </div>
-      
-     </div>
+    </div>
+    </div>
     </main>
 
 
@@ -274,6 +235,7 @@
     
       <!-- Template Main JS File -->
       <script src="../assets/js/main.js"></script>
+      <script type="module" src="js/add-service-category.js"></script>
     
 </body>
 </html>

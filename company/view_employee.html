@@ -135,17 +135,22 @@
         <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="add_service.html">
-              <i class="bi bi-circle"></i><span>Assign Services</span>
+              <i class="bi bi-circle"></i><span>Create Services</span>
             </a>
           </li>
           <li>
             <a href="view_service.html">
-              <i class="bi bi-circle"></i><span>View Services</span>
+              <i class="bi bi-circle"></i><span>View Requested Services</span>
             </a>
           </li>
           <li>
             <a href="service_report.html">
-              <i class="bi bi-circle"></i><span>Service Reports</span>
+              <i class="bi bi-circle"></i><span>Create Service Category</span>
+            </a>
+          </li>
+          <li>
+            <a href="viewservicecategory.html">
+              <i class="bi bi-circle"></i><span>View Service Category</span>
             </a>
           </li>
         </ul>
@@ -220,45 +225,32 @@
           </div>
             <!-- <p>Use contextual classes <code>.table-primary .table-secondary .table-success .table-danger .table-warning .table-info .table-light .table-dark</code> to color tables, table rows or individual cells.</p> -->
             <!-- Table Variants -->
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="row">#</th>
-                  <th>Employe_Img</th>
-                  <th>Employe_Name</th>
-                  <th>Employe_Age</th>
-                  <th>Employe_Dob</th>
-                  <th>Employe_phone</th>
-                  <th>Employee_Address</th>
-                  <th>Employee_Service</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Image</td>
-                  <td>Omar Warfa Aadan</td>
-                  <td>21</td>
-                  <td>10-12-1998</td>
-                  <td>0634564345443</td>
-                  <td>Jarka , Borama-Somaliland</td>
-                  <td>Plumber</td>
-                  <td class="d-flex"><button class="btn btn-primary text-white">view</button>&numsp;<button class="btn btn-success">update</button>&numsp;<button class="btn btn-danger">delete</button></td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Image</td>
-                  <td>Omar Warfa Aadan</td>
-                  <td>21</td>
-                  <td>10-12-1998</td>
-                  <td>0634564345443</td>
-                  <td>Jarka , Borama-Somaliland</td>
-                  <td>Plumber</td>
-                  <td><button class="btn btn-primary text-white">view</button>&numsp;<button class="btn btn-success">update</button>&numsp;<button class="btn btn-danger">delete</button></td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table class="table  table-hover">
+                <thead>
+                  <tr>
+                    <th scope="row">#</th>
+                    <th>Employe_Img</th>
+                    <th>Employe_Fullname</th>
+                    <th>Employe_Age</th>
+                    <th>Employe_Gender</th>
+                    <th>Employe_Dob</th>
+                    <th>Employee_Phone</th>
+                    <th>Country</th>
+                    <th>Address</th>
+                    <th>Service Type</th>
+                    <th>Employee_Certificate</th>
+                    <th>Employee_Expreince</th>
+                    <th>Employee_Associated_Company</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="employeedata">
+               
+                 
+                </tbody>
+              </table>
+            </div>
             <!-- End Table Variants -->
     
           </div>
@@ -275,6 +267,8 @@
     
       <!-- Template Main JS File -->
       <script src="../assets/js/main.js"></script>
+      <script type="module"  src="js/view-employee.js"></script>
+      <script type="module"  src="js/delete-employe.js"></script>
     
 </body>
 </html>

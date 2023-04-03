@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Report</title>
+    <title>View Service</title>
       <!-- Favicons -->
         <link href="../assets/img/favicon.png" rel="icon">
         <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -127,12 +127,12 @@
       </ul>
     </li><!-- End Forms Nav -->
     <li class="nav-item">
-      <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#" >
+      <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#"style="background-color: #F6F9FF;">
         <i class="bi bi-bar-chart"></i><span>Services</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-          <a href="add_service.html" >
+          <a href="add_service.html">
             <i class="bi bi-circle"></i><span>Create Services</span>
           </a>
         </li>
@@ -147,7 +147,7 @@
           </a>
         </li>
         <li>
-          <a href="viewservicecategory.html">
+          <a href="viewservicecategory.html"  style="background-color: #F6F9FF;" >
             <i class="bi bi-circle"></i><span>View Service Category</span>
           </a>
         </li>
@@ -170,7 +170,7 @@
     </li><!-- End F.A.Q Page Nav -->
 
     <li class="nav-item">
-      <a class="nav-link collapsed" href="payment.html" style="background-color: #F6F9FF;">
+      <a class="nav-link collapsed" href="payment.html">
         <i class="bi bi-envelope"></i>
         <span>Payment</span>
       </a>
@@ -197,6 +197,7 @@
 
 </aside><!-- End Sidebar-->
 
+
   <main id="main" class="main">
 
     <div class="pagetitle">
@@ -204,7 +205,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
-          <li class="breadcrumb-item active">Payment</li>
+          <li class="breadcrumb-item active">View Service</li>
         </ol>
       </nav>
     </div>
@@ -212,19 +213,48 @@
       <div class="col-xxl-20 col-md-12">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title"> Generate Report</h5>
-                <p>Find a way to represent payment details</p>
+            <h5 class="card-title">View Service </h5>
+          <div class="mb-4">
+            <div class="col-4 d-flex">
+              <input type="text" class="form-control" placeholder="Search by name">
+                  
+              <button class="btn btn-primary" style="position:relative;left:10px;">Search</button>
+            </div>
+          </div>
+            <!-- <p>Use contextual classes <code>.table-primary .table-secondary .table-success .table-danger .table-warning .table-info .table-light .table-dark</code> to color tables, table rows or individual cells.</p> -->
+            <!-- Table Variants -->
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="row">#</th>
+                  <th>Service Name</th>
+                  <th>Service Added Date</th>   
+                  <th>Action</th>
+                  
+                </tr>
+              </thead>
+              <tbody id="servicecategorydata">
+               
+              </tbody>
+            </table>
+            <!-- End Table Variants -->
+    
           </div>
         </div>
       </div>
+      <div class="col">
+        <!-- <h4>Search By Category</h4> -->
+      </div>
      </div>
     </main>
-   
+
+
       <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
       
     
       <!-- Template Main JS File -->
       <script src="../assets/js/main.js"></script>
+      <script type="module" src="js/add-service-category.js"></script>
     
 </body>
 </html>
