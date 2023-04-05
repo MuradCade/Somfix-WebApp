@@ -58,7 +58,7 @@ const db = getFirestore();
             const docSnap = await getDocs(docRef);
             docSnap.forEach((doc) => {
                // doc.data() is never undefined for query doc snapshots
-               console.log(doc.id, " => ", doc.data().role);
+               // console.log(doc.id, " => ", doc.data().role);
 
                if(doc.data().role == 'admin'){
                   console.log('welcome admin');
