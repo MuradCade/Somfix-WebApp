@@ -50,11 +50,11 @@ const db = getFirestore();
    }
    
 
-   // check logged user role then rediret it with the dashboard
+   // check logged user role then redirect it with the suitable dashboard
    async function Checkuserrole(useremail) {
       
      
-            const docRef = query(collection(db, "userdata"), where("Email", "==", useremail));
+            const docRef = query(collection(db, "userdata") , where("Email", "==", useremail));
             const docSnap = await getDocs(docRef);
             docSnap.forEach((doc) => {
                // doc.data() is never undefined for query doc snapshots

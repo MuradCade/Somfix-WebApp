@@ -228,28 +228,17 @@
                 <tr>
                   <th scope="row">#</th>
                   <th>Service Name</th>
+                  <th>Service Type</th>
                   <th>Service Providers</th>
+                  <th>Customer Name</th>
                   <th>Service Assigned Date</th>
                   <th>Action</th>
                   
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Plumber</td>
-                  <td>Employee1</td>
-                  <td>02-10-2021</td>
-                  <td class="d-flex"><button class="btn btn-primary text-white">view</button>&numsp;<button class="btn btn-success">update</button>&numsp;<button class="btn btn-danger">delete</button></td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Electrician</td>
-                  <td>Employee2</td>
-                  <td>02-10-2021</td>
-                  <td class="d-flex"><button class="btn btn-primary text-white">view</button>&numsp;<button class="btn btn-success">update</button>&numsp;<button class="btn btn-danger">delete</button></td>
-                </tr>
+              <tbody id="data">
               </tbody>
+              <p id="msg"></p>
             </table>
             <!-- End Table Variants -->
     
@@ -268,6 +257,7 @@
     
       <!-- Template Main JS File -->
       <script src="../assets/js/main.js"></script>
+      <script type="module" src="js/viewservice.js"></script>
       <script type="module" src="js/logout.js"></script>
     
 </body>

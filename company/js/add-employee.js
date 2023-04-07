@@ -1,6 +1,10 @@
    // Import the functions you need from the SDKs you need
    import { initializeApp} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-   import {getFirestore,addDoc,collection} from"https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
+   import {getFirestore,addDoc,collection,getDocs} from"https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
+   import {getAuth , 
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
    import {firebaseConfig} from './firebase.js';
 
         // firebase intialization
@@ -8,22 +12,29 @@
     
         // call the  get database method
     const db = getFirestore();
+    // call firebase auth
+    
+   const auth = getAuth(app);
 
 
+// way to store the data 
+// 1- get the data from employee form and store it in collection called employee
+// 2- then create account form will be stored authtication and userdata (collection that we store the role,email,fullname,and phone of the user) so employe use the appp
 
-    // get form data
-    let fullname = document.getElementById('fullname');
+    // form1- get data from employee form
+    let fname = document.getElementById('fname');
+    let lname = document.getElementById('lname');
     let img = document.getElementById('img');
-    let age = document.getElementById('age');
-    let gender = document.getElementById('gender');
-    let dob = document.getElementById('dob');
     let phone = document.getElementById('phone');
-    let address = document.getElementById('address');
+    let gender = document.getElementById('gender');
+    let age = document.getElementById('age');
     let country = document.getElementById('country');
-    let servicecategory = document.getElementById('service_category');
+    let address = document.getElementById('address');
+    let exprience = document.getElementById('exprience');
     let certificate = document.getElementById('certificate');
-    let experience = document.getElementById('experience');
-    let company_associated = document.getElementById('company-associated');
+    let servicetype = document.querySelector('#servicetype');
+    let employemail = document.getElementById('employemail');
+
     // company respose success or failed message
     let successmsg = document.querySelector('#success-msg');
     let errormsg = document.querySelector('#error-msg');
@@ -31,31 +42,78 @@
     let submitbtn = document.getElementById('submit');
 
 
+    // form2- get the data from create employe account(this account is for login purpose)
+    let email = document.getElementById('email');
+    let pwd = document.getElementById('pwd');
+    let createaccountbtn = document.getElementById('createaccount');
+    
 
+
+     // check the auth change status then get the email of the user
+     let useremail = '';
+     let userid;
+     auth.onAuthStateChanged((user)=>{
+         if(user){
+            // console.log(user.uid);
+            useremail = user.email;
+            userid = user.uid;
+            
+            
+           
+         }
+        });
+        // thsi button is to store data  to the employee collection
     submitbtn.addEventListener('click',(e)=>{
         e.preventDefault();
-    
-         // check input field  its filled
-         if(fullname.value !='' && img.value != '' && age.value != '' && gender.value != '' && dob.value != '' && 
-         phone.value != '' && address.value !='' && country.value !='' && servicecategory.value !='' && certificate.value !=''
-         && experience.value !='' && company_associated.value !=''){
+        //  check input field  its filled
+         if(fname.value !='' && img.value != '' && age.value != '' && gender.value != '' && dob.value != '' && 
+         phone.value != '' && address.value !='' && country.value !='' && lname.value !='' && certificate.value !=''
+         && exprience.value !=''&& servicetype != ''){
+            
+            // store employee data in firestore
             AddEmployeeData();
+            
+         //  store role to userdata collection so user can use the app
+         storemployedatain_userdata_collection(employemail.value);
+    
+           
          }
          else{
              successmsg.style.display = 'none';
              errormsg.style.display = 'block';
              errormsg.innerHTML = 'Please Fill The  Entire Form';
          }
+
+
     });
 
+
+    // this btn is for creating account for employee(employe will have ability to login using the app)
+    createaccountbtn.addEventListener('click',function(e){
+        e.preventDefault();
+        // clicked
+        if(email.value != '' && pwd.value != ''){
+            // create employe account ((login credentails))
+            createUserwithEmailandPwd();
+
+        }else{
+            console.log('empty fields');
+        }
+    })
+    // get the current date
+    let c = new Date();
+    let created_date = c.toLocaleDateString();
+    // 1 - create collection name employee store data in there
     // function that  add employee inforation to cloud firestore
  async function AddEmployeeData(){
-        var ref = collection(db,'employee');
+        var ref = collection(db,'employe');
 
         const docRef = await addDoc(
             ref,{
 
-                fullname:fullname.value,
+                fullname:fname.value,
+                lastname:lname.value,
+                email:employemail.value,
                 profile_image:img.value,
                 age:age.value,
                 gender:gender.value,
@@ -63,20 +121,86 @@
                 phone:phone.value,
                 country:country.value,
                 address:address.value,
-                serivce_category:servicecategory.value,
+                service_type:servicetype.value,
                 certificate:certificate.value,
-                experience:experience.value,
-                company_associated:company_associated.value,
+                experience:exprience.value,
+                // useremail is the company employee is registered or associated from
+             
+                company_associated:useremail,
+                created_date: created_date,
+                updated_date: 'false',
+                delete_status:'false',
+              
+            
             }
         ).then(()=>{
             errormsg.style.display = 'none';
             successmsg.style.display = 'block';
             successmsg.innerHTML = 'Data Added Successfully';
+            console.log('data added to employee collection');
         }).catch((error)=>{
             errormsg.style.display = 'block';
             successmsg.style.display = 'none';
             errormsg.innerHTML = error;
+            console.log("error msg",error);
         });
         
 
+    }
+
+
+   //*! employee form needs service category names in service type field
+    async function displayservicecategorynames(){
+        let Docref = collection(db,'servicecategory');
+        let Docsnap = await getDocs(Docref);
+        
+        Docsnap.forEach(docs => {
+            var option = document.createElement('option');
+            option.text = docs.data().servicename;
+            servicetype.options.add(option)
+        });
+        
+
+    }
+
+    displayservicecategorynames();
+
+
+
+    // 2- create account for the employee
+    // auth for the applogin
+   function createUserwithEmailandPwd(){
+   createUserWithEmailAndPassword(auth,email.value,pwd.value).then(()=>{
+    }).then(()=>{
+ 
+            console.log('user email and pwd are created');
+            const Logoutclass = async() =>{
+                await signOut(auth);
+                console.log('logout success');
+        }
+        Logoutclass();
+
+     
+    }).catch((error)=>{
+        console.log('error from add-employe.js in company folder: ' + error);
+    });
+   }
+    
+
+    // 3- store users (email) in userdata for the role login
+    async function storemployedatain_userdata_collection(email){
+        let docRef = collection(db,'userdata');
+        let docSnap = await addDoc( docRef,{
+            Email: email,
+            Firstname:fname.value,
+            Lastname:lname.value,
+            addeddate:created_date,
+            id:userid,
+            role:'freelancer',
+        }).then(()=>{
+            console.log('user role is created');
+
+        }).catch((err)=>{
+            console.log(err);
+        })
     }

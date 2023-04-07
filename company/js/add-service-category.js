@@ -20,11 +20,11 @@
     let submit = document.querySelector('#submit');
 
     // check the auth change status then get the email of the user
-    let uid = '0';
+    let useremail = '0';
     auth.onAuthStateChanged((user)=>{
         if(user){
            // console.log(user.uid);
-           uid = user;
+           useremail = user.email;
           
         }else{
            console.log('user not found');
@@ -58,7 +58,7 @@
                 createddate:added_date.value,
                 update_date:'false',
                 deleted_status:"false",
-                create_by: uid,
+                create_by: useremail,
 
 
         }).then(()=>{
@@ -80,18 +80,5 @@
 
     
 
-    let url = window.location.search;
-    let check = url.search('view');
-
-  
-
-    const displaysignleservicecategory = ()=>{
-        let servicename = document.querySelector('#servicename');
-
-        let date = document.querySelector('#date');
-        // let update_date = document.querySelector('#update_date');
-    }
-
-    // viewservicecategory()?'':"";
 
 

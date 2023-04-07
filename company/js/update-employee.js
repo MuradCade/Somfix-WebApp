@@ -54,24 +54,25 @@ async function viewdatainupdateform(){
     
     //   get the id from url by slicing it  (uid is company id)
     let uid = url.slice(8,28);
-    const docRef = doc(db, "employee", uid);
+    const docRef = doc(db, "employe", uid);
     const result = await getDoc(docRef);
-
+    var option = document.createElement('option');
+    // option.text = docs.data().servicename;
     if (result.exists()) {
         fullname.value= result.data().fullname;
-        // img.value = result.data().img
-        age.value = result.data().age
-        gender.value = result.data().gender
-        dob.value = result.data().dob
-        phone.value = result.data().phone
-        address.value = result.data().address
-        country.value = result.data().country
+        // img.name ='helo';
+        age.value = result.data().age;
+        gender.value = result.data().gender;
+        dob.value = result.data().dob;
+        phone.value = result.data().phone;
+        address.value = result.data().address;
+        country.value = result.data().country;
         servicecategory.value = result.data().serivce_category;
         // certificate.value = result.data().certificate;
         experience.value = result.data().experience;
         company_associated.value = result.data().company_associated
 
-        console.log("Document data:", result.data().fullname);
+        // console.log("Document data:", result.data().fullname);
       }
       else {
         // doc.data() will be undefined in this case
@@ -87,7 +88,7 @@ async function viewdatainupdateform(){
     
         //   get the id from url by slicing it  (uid is company id)
         let uid = url.slice(8,28);
-        const ref = doc(db, "employee", uid.toString());
+        const ref = doc(db, "employe", uid.toString());
         await updateDoc(
             ref,{
                 fullname:fullname.value,
@@ -101,7 +102,6 @@ async function viewdatainupdateform(){
                 serivce_category:servicecategory.value,
                 certificate:certificate.value,
                 experience:experience.value,
-                company_associated:company_associated.value,
             }
         ).then(()=>{
             errormsg.style.display = 'none';

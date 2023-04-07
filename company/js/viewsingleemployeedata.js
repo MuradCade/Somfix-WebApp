@@ -36,6 +36,7 @@ function displaysignleemployedata (){
     let certificate = document.getElementById("certificate");
     let expreince = document.getElementById("expreince");
     let companyassociatedwith = document.getElementById("companyassociatedwith");
+    let employeemail = document.getElementById('employeemail');
     // notify user that data is loading please wait msg
     let dataloading = document.getElementById("loading");
     //   get the id from url by slicing it  (uid is company id)
@@ -47,7 +48,7 @@ function displaysignleemployedata (){
     // function that populates or passes data from db to html element
     async function ViewData(){
         dataloading.innerText = 'data is loading please wait';
-        var ref = collection(db,"employee");
+        var ref = collection(db,"employe");
         const displayselectedcompany = await getDocs(ref);
         
             displayselectedcompany.forEach(doc => {
@@ -56,13 +57,14 @@ function displaysignleemployedata (){
                 if(doc.id == uid){
                     img.innerHTML = `${doc.data().profile_image}`
                     fullname.innerHTML = `${doc.data().fullname}`
+                    employeemail.innerHTML = `${doc.data().email}`
                     age.innerHTML = `${doc.data().age}`
                     gender.innerHTML = `${doc.data().gender}`
                     dob.innerHTML = `${doc.data().dob}`
                     phone.innerHTML = `${doc.data().phone}`
                     Country.innerHTML = `${doc.data().country}`
                     address.innerHTML = `${doc.data().address}`
-                    servicetype.innerHTML = `${doc.data().serivce_category}`
+                    servicetype.innerHTML = `${doc.data().service_type}`
                     certificate.innerHTML = `${doc.data().certificate}`
                     expreince.innerHTML = `${doc.data().experience}`
                     companyassociatedwith.innerHTML = `${doc.data().company_associated}`
