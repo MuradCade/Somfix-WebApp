@@ -5,6 +5,8 @@
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
+    import {getStorage,ref,uploadBytes,getDownloadURL} from"https://www.gstatic.com/firebasejs/9.17.2/firebase-storage.js";
+
    import {firebaseConfig} from './firebase.js';
 
         // firebase intialization
@@ -15,6 +17,8 @@
     // call firebase auth
     
    const auth = getAuth(app);
+   const storage = getStorage();
+
 
 
 // way to store the data 
@@ -107,14 +111,18 @@
     // function that  add employee inforation to cloud firestore
  async function AddEmployeeData(){
         var ref = collection(db,'employe');
+         // call the function that uploads the ikmage to firebase storage
+         let value =   uploadimagetofirebasestorage();
+         // call the function that gets the returned value(downloaded imageurl from the function uploadimagetofirebasestorage  to this functions)
+         let urlofimg =  await getdownloadedurlafteruploadimage(value);
 
         const docRef = await addDoc(
             ref,{
-
+                
                 fullname:fname.value,
                 lastname:lname.value,
                 email:employemail.value,
-                profile_image:img.value,
+                profile_image:urlofimg,
                 age:age.value,
                 gender:gender.value,
                 dob:dob.value,
@@ -196,7 +204,7 @@
             Lastname:lname.value,
             addeddate:created_date,
             id:userid,
-            role:'freelancer',
+            role:'employee',
         }).then(()=>{
             console.log('user role is created');
 
@@ -204,3 +212,60 @@
             console.log(err);
         })
     }
+
+
+
+
+    //  addimage to firebase storeage
+    async function uploadimagetofirebasestorage(){
+        // const ref= app.storage().ref()
+        const file  =  img.files[0];
+        const name = new Date() + '-' + file.name;
+        let downloadedimageurl= [];
+        let getdata;
+        let result;
+        // /create child refrence
+        const imageref = ref(storage,`images/${name}`);
+        // file metadata
+        const metadata = {
+            contentType: 'image/jpeg',
+          };
+          
+        // 'file' comes from the Blob or File API
+             await uploadBytes(imageref, file,metadata).then((snapshot) => {
+            
+
+                // const downloadurl = ref().getDownloadURL();
+                console.log('Image Uploaded Successfully');
+            getdata =  getDownloadURL(ref(storage, `images/${name}`))
+                        .then((url) =>  {
+                            // `url` is the download URL for 'images/stars.jpg'
+                           
+                           
+
+                             return downloadedimageurl[0] = url;
+                        })
+                        .catch((error) => {
+                            // Handle any errors
+                             console.log(`error message: ${error}`);
+                        });
+
+                        return downloadedimageurl[0]
+                        
+                    });
+                    
+                   
+                    
+                   result = await getdata;
+
+                  return result
+    }
+
+
+
+async function getdownloadedurlafteruploadimage(result){
+    const a = await result;
+    console.log('from below function ',a);
+    return a;
+}
+   

@@ -34,6 +34,7 @@
                     tr.innerHTML += `
                     <tr>
                     <td>${number}</td>
+                    <td><img src='${doc.data().service_image}' width=30></td>
                     <td>${doc.data().servicename}</td>
                     <td>${doc.data().createddate}</td>
                     <td><a href='singleservicecategorydata.html?view=${doc.id}' class='btn btn-primary'>View</a>&numsp;<a href='update-service-category.html?update=${doc.id}' class='btn btn-success'>Update</a>&numsp;<a href='viewservicecategory.html?delete=${doc.id}' class='btn btn-danger'>Delete</a></td>
