@@ -101,7 +101,7 @@
             createUserwithEmailandPwd();
 
         }else{
-            console.log('empty fields');
+            alert('empty email and password field')
         }
     })
     // get the current date

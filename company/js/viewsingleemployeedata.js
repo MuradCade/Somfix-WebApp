@@ -55,7 +55,7 @@ function displaysignleemployedata (){
                 // companylogo.innerHTML = `${doc.data()}`;
                 // check if doc.id  from firestore collection equals the uid or(company id)
                 if(doc.id == uid){
-                    img.innerHTML = `${doc.data().profile_image}`
+                    img.innerHTML = `<img src="${doc.data().profile_image}" width=80>`
                     fullname.innerHTML = `${doc.data().fullname}`
                     employeemail.innerHTML = `${doc.data().email}`
                     age.innerHTML = `${doc.data().age}`
@@ -64,10 +64,9 @@ function displaysignleemployedata (){
                     phone.innerHTML = `${doc.data().phone}`
                     Country.innerHTML = `${doc.data().country}`
                     address.innerHTML = `${doc.data().address}`
-                    servicetype.innerHTML = `${doc.data().service_type}`
-                    certificate.innerHTML = `${doc.data().certificate}`
+                    servicetype.innerHTML = `${doc.data().serivce_category}`
+                    certificate.innerHTML = `${doc.data().certificate}"`
                     expreince.innerHTML = `${doc.data().experience}`
-                    companyassociatedwith.innerHTML = `${doc.data().company_associated}`
                 }
                 else{
                     console.log('error');

@@ -25,6 +25,7 @@ import {firebaseConfig} from './firebase.js';
   let certificate = document.getElementById('certificate');
   let experience = document.getElementById('experience');
   let company_associated = document.getElementById('company-associated');
+  let optiondata = document.getElementById('optiondata');
       // company respose success or failed message
       let successmsg = document.querySelector('#success-msg');
       let errormsg = document.querySelector('#error-msg');
@@ -54,24 +55,29 @@ async function viewdatainupdateform(){
     
     //   get the id from url by slicing it  (uid is company id)
     let uid = url.slice(8,28);
+    console.log(uid)
     const docRef = doc(db, "employe", uid);
     const result = await getDoc(docRef);
     var option = document.createElement('option');
     // option.text = docs.data().servicename;
     if (result.exists()) {
         fullname.value= result.data().fullname;
-        // img.name ='helo';
+        img.src =result.data().profile_image;
         age.value = result.data().age;
         gender.value = result.data().gender;
         dob.value = result.data().dob;
         phone.value = result.data().phone;
         address.value = result.data().address;
         country.value = result.data().country;
-        servicecategory.value = result.data().serivce_category;
-        // certificate.value = result.data().certificate;
+        // option.append(result.data().serivce_type)
+        // let optionText = document.createTextNode(result.data().serivce_type);
+
+        optiondata.text = result.data().service_type;
+        certificate.src = result.data().certificate;
         experience.value = result.data().experience;
         company_associated.value = result.data().company_associated
-
+        console.log(result.data().profile_image);
+        console.log(result.data().certificate);
         // console.log("Document data:", result.data().fullname);
       }
       else {
@@ -92,7 +98,7 @@ async function viewdatainupdateform(){
         await updateDoc(
             ref,{
                 fullname:fullname.value,
-                profile_image:img.value,
+                profile_image:img.src,
                 age:age.value,
                 gender:gender.value,
                 dob:dob.value,
@@ -100,7 +106,7 @@ async function viewdatainupdateform(){
                 country:country.value,
                 address:address.value,
                 serivce_category:servicecategory.value,
-                certificate:certificate.value,
+                certificate:certificate.src,
                 experience:experience.value,
             }
         ).then(()=>{

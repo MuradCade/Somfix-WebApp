@@ -8,10 +8,23 @@
     
         // call the  get database method
     const db = getFirestore();
-
+    const auth = getAuth(app);
    let tr = document.querySelector('#employeedata');
 
    
+   // check the auth change status then get the email of the user
+   let companyemail = '';
+   let userid;
+   auth.onAuthStateChanged((user)=>{
+       if(user){
+          // console.log(user.uid);
+          companyemail = user.email;
+          userid = user.uid;
+          
+          
+         
+       }
+      });
 //    function that display employee data
 async function Viewemployeedata(){
     var ref = collection(db,"employe");
@@ -33,29 +46,29 @@ async function Viewemployeedata(){
    docSnap.forEach(doc => {
       
        
-      if(doc.data().delete_status == "false"){
+      if(doc.data().delete_status == "false" && doc.data().company_associated == companyemail){
         tr.innerHTML += `
 
         <tr>
         <td>${number}</td>
-        <td>${doc.data().profile_image}</td>
+        <td><img src='${doc.data().profile_image}' width='80'></td>
         <td>${doc.data().fullname}</td>
         <td>${doc.data().age}</td>
         <td>${doc.data().gender}</td>
-        <td>${doc.data().dob}</td>
+        <td>${doc.data().dob??'01-20-2000'}</td>
         <td>${doc.data().phone}</td>
         <td>${doc.data().country}</td>
         <td>${doc.data().address}</td>
-        <td>${doc.data().service_type}</td>
-        <td>${doc.data().certificate}</td>
+        <td>${doc.data().serivce_category??'Plumber'}</td>
+        <td>${doc.data().certificate ?? 'C:\fakepath\Capture.PNG'}</td>
         <td>${doc.data().experience}</td>
-        <td>${doc.data().company_associated}</td>
+        <td>${doc.data().company_associated ?? "hilac@company.com"}</td>
         <td class='d-flex'><a href="displaysingleemployeedata.html?view=${doc.id}" class='btn btn-primary'>View</a>&numsp;<a href='updateemployee.html?update=${doc.id}' class='btn btn-success'>Update</a> &numsp;<a href='view_employee.html?delete=${doc.id}' class='btn btn-danger'>Delete</a></td>
         </tr>
         
     `;
       }else{
-        tr.innerHTML = 'Empty Table Please Enter Data'
+        // tr.innerHTML = 'Empty Table Please Enter Data'
 
       }
       
