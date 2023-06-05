@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Company</title>
+    <title>View Subscription</title>
       <!-- Favicons -->
         <link href="assets/img/favicon.png" rel="icon">
         <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -17,7 +17,10 @@
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
         <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
- 
+        <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+        <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+        <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+        <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
         <link href="assets/css/style.css" rel="stylesheet">
 </head>
@@ -61,8 +64,8 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img  id="profile-img" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2" id="fullname"></span>
+            <img  id="profile-img"  alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2" d="fullname"></span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -87,7 +90,12 @@
             <li>
               <hr class="dropdown-divider">
             </li>
-           
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
 
           </ul><!-- End Profile Dropdown Items -->
         </li><!-- End Profile Nav -->
@@ -103,14 +111,14 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="dashboard.html" style="background-color: white;">
+        <a class="nav-link " href="dashboard.html"style="background-color:white">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#" style="background-color: #F6F9FF;">
+        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>Company</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
@@ -119,7 +127,7 @@
               <i class="bi bi-circle"></i><span>Add Companies</span>
             </a>
           <li>
-            <a href="view_company.html" style="background-color: #F6F9FF;">
+            <a href="view_company.html">
               <i class="bi bi-circle"></i><span>View Companies</span>
             </a>
           </li>
@@ -127,7 +135,6 @@
       </li><!-- End Components Nav -->
 
 
-   
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
@@ -148,7 +155,7 @@
       </li><!-- End Charts Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#"style="background-color: #F6F9FF;">
           <i class="bi bi-gem"></i><span>Subscriptions</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
@@ -158,7 +165,7 @@
             </a>
           </li>
           <li>
-            <a href="view_subscription.html">
+            <a href="view_subscription.html"style="background-color: #F6F9FF;">
               <i class="bi bi-circle"></i><span>View Subscriptions</span>
             </a>
           </li>
@@ -175,12 +182,12 @@
         </a>
       </li><!-- End Profile Page Nav -->
 
-   
+  
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="payment.html">
           <i class="bi bi-envelope"></i>
-          <span>Paymennt</span>
+          <span>Payment</span>
         </a>
       </li><!-- End Contact Page Nav -->
 
@@ -192,13 +199,18 @@
           <span>Logout</span>
         </a>
       </li><!-- End Login Page Nav -->
-
+<!-- 
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-error-404.html">
+          <i class="bi bi-dash-circle"></i>
+          <span>Total Payment</span>
+        </a>
+      </li>End Error 404 Page Nav -->
 
 
     </ul>
 
   </aside><!-- End Sidebar-->
-
 
   <main id="main" class="main">
 
@@ -207,46 +219,47 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
-          <li class="breadcrumb-item active">View Particular Comapny Details</li>
+          <li class="breadcrumb-item active">View Subscription</li>
         </ol>
       </nav>
     </div>
     <div class="row">
-      <div class="col-xxl-12 col-md-12" id="viewdata">
+      <div class="col-xxl-20 col-md-12">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">View Particular Company Data</h5>
-            <div class="mb-4">
-           <p>   Company Logo<img id="logo" width="80"/></p>
-              <p>Comapnay Name :  &numsp;<span id="companyname" style="font-size: 18px;"></span></p>
-              <p>Ceo Name :   &numsp;<span id='ceoname' style="font-size: 18px;"></span></p>
-              <p>Company Address :   &numsp;<span id="address" style="font-size: 18px;"></span></p>
-              <p>Company Phone :  &numsp; <span id="phone" style="font-size: 18px;"></span></p>
-              <p>Company Country :  &numsp; <span id="employee" style="font-size: 18px;"></span></p>
-              <p>Company Description :  &numsp; <span id="desc" class="text-justify" style="font-size: 18px;"></span></p>
-              <div class="text-start">
-                <a href="view_company.html" class="btn btn-primary">Go Back</a>
-              </div>
+            <h5 class="card-title">View Subscription </h5>
+          <div class="mb-4">
+           
+         
+            <div class="container">
+            <p id="loading"></p>
+              <p id="companyname"></p>
+              <p id="companyphone"></p>
+              <p id="companyemail"></p>
+              <p id="subscription_duration"></p>
+              <p id="payment_method"></p>
+              <p id="payment_amount"></p>
+              <p id="dateandtime"></p>
+              <p id="subscription_status"></p>
+              <a href="view_subscription.html" class="btn btn-primary">Go Back</a>
             </div>
           </div>
-        </div> 
+        </div>
       </div>
-    </div>
+      <div class="col">
+        <!-- <h4>Search By Category</h4> -->
+      </div>
+     </div>
     </main>
-
-
-
-
-     
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
     
-    
-    <!--   viewdata  JS File -->
-    <script   src="assets/js/main.js"></script>
-    <script  type="module"  src="assets/js/viewdata.js"></script>
-    <script type="module" src="assets/js/profile-topbar.js"></script>
-    <!-- <script type="module" src="assets/js/checkstate.js"></script> -->
-    <script type="module" src="assets/js/logout.js"></script>
+      <!-- Template Main JS File -->
+      <script src="assets/js/main.js"></script>
+      <script type="module" src="assets/js/display_single_subscription.js"></script>
 
-    </body>
-    </html>
+      <!-- <script type="module" src="assets/js/checkstate.js"></script> -->
+      <script type="module" src="assets/js/logout.js"></script>
+    
+</body>
+</html>

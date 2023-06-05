@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Company | View Service</title>
+    <title>Company | Update Service</title>
       <!-- Favicons -->
         <link href="../assets/img/favicon.png" rel="icon">
         <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -65,12 +65,12 @@
   
             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
               <img id="profile-img" alt="Profile" class="rounded-circle">
-              <span class="d-none d-md-block dropdown-toggle ps-2" id="fullname"></span>
+              <span class="d-none d-md-block dropdown-toggle ps-2"id="fullname"></span>
             </a><!-- End Profile Iamge Icon -->
   
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li class="dropdown-header">
-                <h6 id="fullname"></h6>
+                <h6 id="subname"></h6>
                 <!-- <span>Web Designer</span> -->
               </li>
               <li>
@@ -167,6 +167,7 @@
         </a>
       </li><!-- End Profile Page Nav -->
   
+   
   
       <li class="nav-item">
         <a class="nav-link collapsed" href="payment.html">
@@ -209,26 +210,74 @@
     <div class="row">
       <div class="col-xxl-20 col-md-12">
         <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Detial Service Category </h5>
-            <div class="mb-4">
-                <p class="text-center" id="loading"></p>
-                <p id="serviceimage"></p>
-                <p id="servicename"></p>
-                <p id="serviceprice"></p>
-                <p id="servicestatus"></p>
-                <p id="serviceaddress"></p>
-                <p id="servicecategory"></p>
-                <p id="serviceduration"></p>
-                <p id="personcreatedservice"></p>
-                <p id="servicediscount"></p>
-                <p id="servicedescription"></p>
-                <div class="text-start">
-                  <a href="view_service.html" class="btn btn-primary">Go Back</a>
-                </div>
+            <div class="card-body">
+                <h5 class="card-title"> Update Service</h5>
+                <p id="loading"></p>
+                <p class="bg-danger text-white p-2" style="display: none;" id="error">hello</p>
+                <p class="bg-success text-white p-2" style="display: none;" id="success">hello</p>
+                <form>
+                  <div class="container mb-3">
+                    <label class="form-label"><strong>Service Name</strong></label>
+                    <input type="text" id="servicename" class="form-control" placeholder="Enter Service Name">     
               </div>
-    
+                  <div class="container mb-3">
+                    <label class="form-label"><strong>Service Image</strong></label>
+                    <input type="file" id="img" class="form-control">     
+              </div>
+                  <div class="container mb-3">
+                    <label class="form-label"><strong>Service Price</strong></label>
+                    <input type="text" id="serviceprice" class="form-control"placeholder='Enter Service Price' >     
+              </div>
+                  <div class="container mb-3">
+                    <label class="form-label"><strong>Service Discount</strong></label>
+                    <input type="text" id="servicediscount" class="form-control"placeholder='Enter Service Discount' >     
+              </div>
+             
+              <div class="container mb-3">
+                <label class="form-label"><strong>Service Status</strong></label>
+                <select class="form-select" id="servicestatus">
+                  <option selected>Select Service Status</option>
+                  <option value="active">Active</option>
+                  
+                </select>      
+              </div>
+              <div class="container mb-3">
+                <label class="form-label"><strong>Service Type</strong></label>
+                <select class="form-select" id="servicetypes">
+                  <option selected>Select Service Type</option>
+                  <option value="Fixed">Fixed</option>
+                  <option value="Free">Free</option>
+                  
+                </select>      
+              </div>
+              <div class="container mb-3">
+                <label class="form-label"><strong>Service Address</strong></label>
+                <input type="text" id="serviceaddress" class="form-control" placeholder='Enter Service Address'>     
           </div>
+              <div class="container mb-3">
+                <label class="form-label"><strong>Service Category</strong></label>
+                <select class="form-select" id="servicecategory">
+                    <option >Select Service Category</option>
+                    <option value="" id="optiondata" selected></option>
+                  <!-- plumber -->
+                  <!-- eleclriticy etc -->
+                  
+                </select>      
+              </div>
+              <div class="container mb-3">
+                <label class="form-label"><strong>Service Duration</strong></label>
+                <input type="time" id="serviceduration" class="form-control" placeholder="Enter Service duration">     
+              </div>
+          
+              <div class="container mb-3">
+                <label class="form-label"><strong>Service Description</strong></label>
+                <textarea  id="description" cols="10" rows="10" class="form-control" placeholder="Enter Service Description"></textarea>
+              </div>
+            <div class="text-center mb-3">
+              <button class="btn btn-primary" id="submit">Submit</button>
+            </div>
+                </form>
+            </div>
         </div>
       </div>
       <div class="col">
@@ -240,11 +289,16 @@
 
       <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
       
+      <script type="module">
+
+ 
+     
+      </script>
     
       <!-- Template Main JS File -->
       <script src="../assets/js/main.js"></script>
       <script type="module" src="js/profile_data.js"></script>
-      <script type="module" src="js/viewservice.js"></script>
+      <script type="module" src="js/displaydata_for_update_form.js"></script>
       <script type="module" src="js/logout.js"></script>
     
 </body>

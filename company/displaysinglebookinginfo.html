@@ -67,7 +67,7 @@
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6 id="subname"></h6>
+              <h6 id="fullname"></h6>
               <!-- <span>Web Designer</span> -->
             </li>
             <li>
@@ -151,7 +151,7 @@
             </a>
           </li>
           <li>
-            <a href="viewbooking.html">
+            <a href="viewbooking.html" style="background-color: #F6F9FF;">
               <i class="bi bi-circle"></i><span>View Booking</span>
             </a>
           </li>
@@ -166,7 +166,7 @@
         </a>
       </li><!-- End Profile Page Nav -->
 
-  
+
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="payment.html">
@@ -195,7 +195,6 @@
     </ul>
 
   </aside><!-- End Sidebar-->
-<!-- End Sidebar-->
 
 
   <main id="main" class="main">
@@ -205,39 +204,91 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
-          <li class="breadcrumb-item active">Update Service Category</li>
+          <li class="breadcrumb-item active">View Particular Comapny Details</li>
         </ol>
       </nav>
     </div>
     <div class="row">
-        <div class="col-xxl-12 col-md-12">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Update Service Category </h5>
-                <div class="mb-4">
-               <form>
-          <p class="p-2 bg-success text-white" id="success-msg" style="display: none;"></p>
-          <p class="p-2 bg-danger text-white" id="error-msg"style="display: none;"></p>
-          <p class="text-center" id="loading"></p>
-          <form>
-            <div class="container mb-3">
-              <label class="form-label"><strong>Service Name</strong></label>
-              <input type="text"  id="servicename" class="form-control" placeholder="Enter Service Category Name...">      
-        </div>
-        <div class="container mb-3">
-              <label class="form-label"><strong>Service Added Date</strong></label>
-              <input type="date" class="form-control" id="added-date">      
-        </div>
-          </form>
-        <div class="text-center mb-3">
-          <button class="btn btn-primary" id="submit">Submit</button>
-        </div>
-               </form>
+      <div class="col-xxl-12 col-md-12" id="viewdata">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">View Booked Servicese</h5>
+            <div class="mb-4">
+              <p class="text-center" id="loading"></p>
+              <div class="form-group">
+
+                <div class="container">
+                    <div class="img-container" id="img-container"></div>
                 </div>
+
+                <div class="container mb-2">
+                    <label for="" id="form-label">Service Name</label>
+                    <input type="text" id="servicename" class="form-control" placeholder="Service Name" readonly>
+                </div>
+
+                <div class="container mb-2">
+                    <label class="form-label">Sevice Address</label>
+                    <input type="text" id="serviceaddresss" class="form-control" placeholder="Service Address" readonly>
+                </div>
+                <div class="container mb-2">
+                    <label class="form-label">Client Id</label>
+                    <input type="text" id="client_id" class="form-control" placeholder="Client Id" readonly>
+                </div>
+                <div class="container mb-2">
+                    <label class="form-label">Description</label>
+                    <textarea   cols="10" rows="10" id="description" class="form-control" placeholder="Description" readonly></textarea>
+                </div>
+                <div class="container mb-2">
+                    <label class="form-label">Price</label>
+                    <input type="text" id="price" class="form-control" placeholder="Price" readonly>
+                </div>
+                <div class="container mb-2">
+                    <label class="form-label">Discount</label>
+                    <input type="text" id="discount" class="form-control" placeholder="Discount" readonly>
+                </div>
+                <div class="container mb-2">
+                    <label class="form-label">Total Amount</label>
+                    <input type="text" id="totalamount" class="form-control" placeholder="Total Amount" readonly>
+                </div>
+                <div class="container mb-2">
+                    <label class="form-label">Service Status</label>
+                    <input type="text" id="servicestatus" class="form-control" placeholder="Service Status" readonly>
+                </div>
+                <div class="container mb-2">
+                    <label class="form-label">Payment Method</label>
+                    <input type="text" id="paymentmethod" class="form-control" placeholder="Payment Method" readonly>
+                </div>
+                <div class="container mb-2">
+                    <label class="form-label">Payment Status</label>
+                    <input type="text" id="paymenstatus" class="form-control" placeholder="Payment Status" readonly>
+                </div>
+                <div class="container mb-2">
+                    <label class="form-label">Date</label>
+                    <input type="text" id="date" class="form-control" placeholder="Date" readonly>
+                </div>
+                <div class="container mb-2">
+                    <label class="form-label">Time</label>
+                    <input type="text" id="time" class="form-control" placeholder="Time" readonly>
+                </div>
+                <div class="container mb-2">
+                    <label class="form-label">Service Provider</label>
+                    <input type="text" id="serviceprovider" class="form-control" placeholder="Service Provider" readonly>
+                </div>
+                <div class="container mb-2">
+                    <label class="form-label">Assign Booked Service</label>
+                   <select id="assignservice" class="form-select">
+                    <option selected>Assign Booked Service Below</option>
+                   </select>
+                </div>
+
+              <div class="text-start">
+                <button class="btn btn-primary" id="updatebookedservicebtn">Update</button>
               </div>
             </div>
-    
+            </div>
           </div>
+        </div> 
+      </div>
     </div>
     </main>
 
@@ -245,15 +296,15 @@
 
 
      
-    <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     
     
     <!--   viewdata  JS File -->
     <script   src="../assets/js/main.js"></script>
     <script type="module" src="js/profile_data.js"></script>
-  <script  type="module"  src="js/update-single-service-category.js"></script>
+    <script  type="module"  src="js/updatebookedservice.js"></script>
     <script type="module" src="js/logout.js"></script>
-
+   
 
     </body>
     </html>

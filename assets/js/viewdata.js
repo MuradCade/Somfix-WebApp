@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-import {getFirestore,collection,getDocs,doc} from"https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
+import {getFirestore,collection,getDocs,doc,updateDoc,deleteDoc} from"https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 import {firebaseConfig} from './firebase.js';
 
      // firebase intialization
@@ -30,18 +30,20 @@ let tr = document.querySelector('#displaydata');
     let number = 1;
     docSnap.forEach(doc => {
        
-        
+     
         tr.innerHTML += `
 
         <tr>
         <td>${number}</td>
-        <td>${doc.data().companyname}</td>
-        <td>${doc.data().companylogo}</td>
-        <td>${doc.data().ceoname}</td>
-        <td>${doc.data().companyaddress}</td>
-        <td>${doc.data().companyphone}</td>
-        <td>${doc.data().employeamount}</td>
-        <td><a href="../../singlecompanydetail.html?view=${doc.id}" class='btn btn-primary'>View</a>&numsp;<a href='updatesignlecompanydetails.html?update=${doc.id}' class='btn btn-success'>Update</a></td>
+        <td><img src='${doc.data().company_logo}' width=80/></td>
+        <td>${doc.data().company_name}</td>
+        <td>${doc.data().email}</td>
+        <td>${doc.data().company_ceo}</td>
+        <td>${doc.data().company_address}</td>
+        <td>${doc.data().company_phone}</td>
+        <td>${doc.data().company_country}</td>
+        <td>${doc.data().company_description}</td>
+        <td class='d-flex'><a href="../../singlecompanydetail.html?view=${doc.id}" class='btn btn-primary'>View</a>&numsp;<a href='updatesignlecompanydetails.html?update=${doc.id}' class='btn btn-success'>Update</a>&numsp; <a href='view_company.html?del=${doc.id}' class='btn btn-danger'>Delete</a></td>
         </tr>
         
     `;
@@ -53,7 +55,7 @@ let tr = document.querySelector('#displaydata');
     }); 
    }
     } catch (error) {
-        tr.innerHTML = '<p class="text-center">Error accoured while display data please refresh the page</p>';
+        // tr.innerHTML = '<p class="text-center">Error accoured while display data please refresh the page</p>';
     }
         
       
@@ -68,7 +70,7 @@ window.onload = ViewData();
 
 //  check url if its equals view pass data to the view form
 
-function displayselectdata () {
+
 
     // get the last of the url start from ? symbol
     let url = window.location.search;
@@ -78,15 +80,18 @@ function displayselectdata () {
     // check if the url contains word update and have id
     let updateurl = url.search('update');
       // intialize input model variables comes fomt view
-      let displaycompanylogo = document.getElementById('logo');
-      let companyname = document.getElementById('companyname');
-      let ceoname = document.getElementById('ceoname');
-      let companyaddress = document.getElementById('address');
-      let companyphone = document.getElementById('phone');
-      let employeeamount = document.getElementById('employee');
-      let companydescription = document.getElementById('desc');
+      let companyname = document.getElementById('companyname')
+      let email = document.getElementById('email')
+      let companylogo = document.getElementById('companylogo')
+      let companyaddress = document.getElementById('companyaddress')
+      let ceoname = document.getElementById('ceoname')
+      let companyphone = document.getElementById('companyphone')
+      let companycountry = document.getElementById('companycountry')
+      let companydesc = document.getElementById('companydesc')
+      let update = document.getElementById('update')
+
     //   get the id from url by slicing it  (uid is company id)
-      let uid = url.slice(6,26);
+      let uid = url.slice(8,29);
 
     
 
@@ -94,23 +99,32 @@ function displayselectdata () {
     
    
       
+    //   console.log(uid);
     
        // read the company collection for particular clicked id (company id)
-    async function ViewData(){
+    async function ViewDatainsideupdateform(){
         var ref = collection(db,"company");
         const displayselectedcompany = await getDocs(ref);
         displayselectedcompany.forEach(doc => {
             // companylogo.innerHTML = `${doc.data()}`;
             // check if doc.id  from firestore collection equals the uid or(company id)
             if(doc.id == uid){
-                displaycompanylogo.innerHTML = `${doc.data().companylogo}`;
-                companyname.innerHTML = `${doc.data().companyname}`;
-                ceoname.innerHTML = `${doc.data().ceoname}`;
-                companyaddress.innerHTML = `${doc.data().companyaddress}`;
-                companyphone.innerHTML = `${doc.data().companyphone}`;
-                employeeamount.innerHTML = `${doc.data().employeamount}`;
-                employeeamount.innerHTML = `${doc.data().employeamount}`;
-                companydescription.innerHTML = `${doc.data().companydesc}`;
+                        companyname.value = `${doc.data().company_name}`
+                        email.value = `${doc.data().email}`
+                        // companylogo.value = 
+                        companyaddress.value = `${doc.data().company_address}`
+                        ceoname.value = `${doc.data().company_ceo}`
+                        companyphone.value = `${doc.data().company_phone}`
+                        companycountry.value = `${doc.data().company_country}`
+                        companydesc.value = `${doc.data().company_description}`
+                // displaycompanylogo.src = `${doc.data().company_logo}`;
+                // companyname.innerHTML = `${doc.data().company_name}`;
+                // ceoname.innerHTML = `${doc.data().company_ceo}`;
+                // companyaddress.innerHTML = `${doc.data().company_address}`;
+                // companyphone.innerHTML = `${doc.data().company_phone}`;
+                // employeeamount.innerHTML = `${doc.data().email}`;
+                // employeeamount.innerHTML = `${doc.data().company_country}`;
+                // companydescription.innerHTML = `${doc.data().company_description}`;
             }
             
 
@@ -121,21 +135,160 @@ function displayselectdata () {
 
 
     }
-
-    // update singlecompany details
-    function updatesinglecompanydetails()
-    {
-        // put update logic here
-        alert('update word found in url');
-    }
-
-    // run functions based on web browser
-    if(check == 1){
-        ViewData();
-    }
-    else if(updateurl == 1){
-    }
-
     
-  }
-  displayselectdata();
+    // run functions based on web browser
+    if(updateurl == 1){
+        console.log(uid);
+        ViewDatainsideupdateform();
+        update.addEventListener('click',function(e){
+            e.preventDefault();
+            if(companylogo.src == ''){
+                updatesinglecompanydetailswithoutimg(uid);
+                console.log('company data updated successfully');
+                // window.location.href = 'view_company.html'
+            }else{
+                updatesinglecompanydetailswithimg(uid);
+                console.log('company data updated successfully');
+                // window.location.href = 'view_company.html'
+            }
+            
+        });
+        
+    }
+  
+    
+    
+    // update singlecompany details
+  async  function updatesinglecompanydetailswithimg()
+    {
+
+             // call the function that uploads the ikmage to firebase storage
+             let value =   uploadimagetofirebasestorage();
+             // call the function that gets the returned value(downloaded imageurl from the function uploadimagetofirebasestorage  to this functions)
+             let urlofimg =  await getdownloadedurlafteruploadimage(value);
+        updateDoc(doc(db,'company',uid),{
+            company_name:companyname.value,
+            company_logo:urlofimg,
+            company_address:companyaddress.value,
+            company_phone:companyphone.value,
+            company_country:companycountry.value,
+            company_desc:companydesc.value,
+            company_ceo:ceoname.value,
+            email:email.value,
+        }).then(()=>{
+
+        }).catch((error)=>{
+            console.log(error);
+        });
+        // put update logic here
+       
+    }
+
+    async  function updatesinglecompanydetailswithoutimg(uio)
+    {
+
+         updateDoc(doc(db,'company',uid),{
+            company_name:companyname.value,
+            // company_logo:urlofimg,
+            company_address:companyaddress.value,
+            company_phone:companyphone.value,
+            company_country:companycountry.value,
+            company_desc:companydesc.value,
+            company_ceo:ceoname.value,
+            email:email.value,
+        }).then(()=>{
+
+        }).catch((error)=>{
+            console.log(error);
+        });
+       
+    }
+
+
+    //  addimage to firebase storeage
+    async function uploadimagetofirebasestorage(uid){
+        let companylogo = document.getElementById('companylogo')
+        // const ref= app.storage().ref()
+        const file  =  companylogo.files[0];
+        const name = new Date() + '-' + file.name;
+        let downloadedimageurl= [];
+        let getdata;
+        let result;
+        // /create child refrence
+        const imageref = ref(storage,`images/${name}`);
+        // file metadata
+        const metadata = {
+            contentType: 'image/jpeg',
+          };
+          
+        // 'file' comes from the Blob or File API
+             await uploadBytes(imageref, file,metadata).then((snapshot) => {
+            
+
+                // const downloadurl = ref().getDownloadURL();
+                console.log('Image Uploaded Successfully');
+            getdata =  getDownloadURL(ref(storage, `images/${name}`))
+                        .then((url) =>  {
+                            // `url` is the download URL for 'images/stars.jpg'
+                           
+                           
+
+                             return downloadedimageurl[0] = url;
+                        })
+                        .catch((error) => {
+                            // Handle any errors
+                             console.log(`error message: ${error}`);
+                        });
+
+                        return downloadedimageurl[0]
+                        
+                    });
+                    
+                   
+                    
+                   result = await getdata;
+
+                  return result
+    }
+
+
+
+async function getdownloadedurlafteruploadimage(result){
+    const a = await result;
+    console.log('from below function ',a);
+    return a;
+}
+
+
+
+// delete the data 
+
+let delcheck = url.search('del');
+let delurl = window.location.search;
+let deluid = delurl.slice(5,28);
+console.log(deluid);
+
+
+// if the url ==delete then delete selected data
+if(delcheck == 1){
+    deletesinglecompany(deluid);
+
+
+}
+
+
+async function deletesinglecompany(deluid){
+     //delete function , deletes the item selected from firestore
+     
+
+      
+        const docRef  = doc(db,'company',deluid);
+        deleteDoc(docRef).then(() =>{
+                alert('company data  deleted successfully');
+                window.location.href = 'view_company.html';
+        }).catch((e)=>{
+            alert('failed to delete company data',e);
+        });
+
+
+}
