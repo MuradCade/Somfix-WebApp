@@ -85,9 +85,9 @@ async function veiwbookedserviceses(){
         <td>${doc.data().totalamount} </td>
         <td> 
             ${doc.data().servicestatus == 'Pending'?  
-            `<a href="viewbooking.html?accept=${doc.id}">Accepted</a><br><a href="viewbooking.html?calcelled=${doc.id}">Decline</a>`
-            :doc.data().servicestatus  == 'Accepted' ? `<p class='text-success'>${doc.data().servicestatus}</p>`: doc.data().servicestatus == 'Cancelled'?
-            `<p class='text-danger'>${doc.data().servicestatus}</p>`:doc.data().servicestatus  == 'Completed'?`<p class='text-success'>Completed</p>`:doc.data().servicestatus  == 'Verified'?`<p class='text-success'>Verified</p>`:console.log()
+            `<a href="viewbooking.html?accept=${doc.id}">Accepted</a><br><a href="viewbooking.html?calcelled=${doc.id}" style='color:red;'>Decline</a>`
+            :doc.data().servicestatus  == 'Accepted' ? `<p class='text-success' style='color:green !important;'>${doc.data().servicestatus}</p>`: doc.data().servicestatus == 'Cancelled'?
+            `<p class='text-danger' style='color:red;'>${doc.data().servicestatus}</p>`:doc.data().servicestatus  == 'Completed'?`<p class='text-success' style='color:green;'>Completed</p>`:doc.data().servicestatus  == 'Verified'?`<p class='text-success'>Verified</p>`:console.log()
             }             
 
          
@@ -97,7 +97,8 @@ async function veiwbookedserviceses(){
         <td>${doc.data().time}</td>
         <td>${doc.data().provideremail}</td>
         <td class="d-flex">
-        ${doc.data().servicestatus == 'Completed' || doc.data().servicestatus == 'Verified' ? `<p class='text-danger'>Already Assigned</p>`:`<a href='displaysinglebookinginfo.html?id=${doc.data().service_id}' class="btn btn-primary">Assing</a>`}
+       
+        ${doc.data().assignstatus == 'true' ? `<p class='text-danger'>Already Assigned</p>`:`<a href='displaysinglebookinginfo.html?id=${doc.data().service_id}' class="btn btn-primary">Assing</a>`}
         </br>
         </td>
         </tr>

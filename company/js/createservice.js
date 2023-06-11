@@ -202,3 +202,23 @@ const a = await result;
 console.log('from below function ',a);
 return a;
 }
+
+
+
+       // check the change of the value in select element
+       servicetypes.addEventListener('change',(event)=>{
+        // getcurrentcompanyinfo(event.target.value)
+        console.log(event.target.value);
+
+        if(event.target.value == 'Free'){
+            serviceprice.setAttribute('readonly',true);
+            servicediscount.setAttribute('readonly',true);
+            serviceprice.value = '0';
+            servicediscount.value = '0';
+        }else{
+            serviceprice.removeAttribute('readonly');
+            servicediscount.removeAttribute('readonly');
+            serviceprice.value = '';
+            servicediscount.value = '';
+        }
+    });

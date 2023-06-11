@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-import {getFirestore,collection,getDocs,doc,updateDoc,deleteDoc,getDoc,addDoc} from"https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
+import {getFirestore,collection,getDocs,doc,updateDoc,deleteDoc,getDoc,addDoc,query,where} from"https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 import {firebaseConfig} from './firebase.js';
 
      // firebase intialization
@@ -23,12 +23,13 @@ import {firebaseConfig} from './firebase.js';
 
  async function getprofilefortopbar(){
 
-    let dRef = collection(db,'Admin');
-    let docRef = await getDocs(dRef);
+ 
+    const docRef = query(collection(db, "Admin"), where("id", "==", 'OZR1MK1v3NcroWos8ukIDbznd8m'));
+    const result = await getDocs(docRef);
 
-    docRef.forEach(doc => {
+    result.forEach(doc => {
         profile.src = `${doc.data().img}`;
-        console.log(doc.data().fullname);
+        // console.log(doc.data().fullname);
         fullname.innerHTML = doc.data().fullname;
         subname.innerHTML = doc.data().fullname;
     });

@@ -15,6 +15,8 @@
     // call the  get database method
 const db = getFirestore();
 const storage = getStorage();
+const user = auth.currentUser;
+
 
 
    let tr = document.querySelector('#data');
@@ -32,11 +34,11 @@ const storage = getStorage();
           
           
          
-       }
-      });
-
-
- 
+        }
+    });
+    
+    
+    // console.log(companyemail);
 
 
 
@@ -57,7 +59,7 @@ if(check != '' && check != 1){
      docsnap.forEach(doc => {
         if(doc.data().person_created_service == companyemail){
 
-            tr.innerHTML = `
+            tr.innerHTML += `
             <tr>
             <td>${number}</td>
             <td><img src="${doc.data().Service_image}" width=80/></td>
@@ -82,7 +84,7 @@ if(check != '' && check != 1){
             </tr>
             `;
         }else{
-                // console.log('data not found');
+                console.log('data not found');
         }
        
          
@@ -111,13 +113,13 @@ let deluid = url.slice(8,29);
     async function delete_service(uid){
 
       
-            const docRef  = doc(db,'service',deluid);
-            deleteDoc(docRef).then(() =>{
-                    console.log('deleted successfully');
-                    window.location.href = 'view_service.html';
-            }).catch((e)=>{
-                console.log('failed to delete data ',e);
-            });
+        const docRef  = doc(db,'service',uid);
+        deleteDoc(docRef).then(() =>{
+                alert('company data  deleted successfully');
+                window.location.href = 'view_service.html';
+        }).catch((e)=>{
+            alert('failed to delete company data',e);
+        });
     
     }
     delete_service(deluid);

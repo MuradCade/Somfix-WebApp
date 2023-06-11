@@ -19,7 +19,7 @@
    const auth = getAuth(app);
    const storage = getStorage();
 
-
+   let generate = Math.floor((Math.random()*1000000)+1);
 
 // way to store the data 
 // 1- get the data from employee form and store it in collection called employee
@@ -66,6 +66,7 @@
            
          }
         });
+
         // thsi button is to store data  to the employee collection
     submitbtn.addEventListener('click',(e)=>{
         e.preventDefault();
@@ -114,13 +115,17 @@
          // call the function that uploads the ikmage to firebase storage
          let value =   uploadimagetofirebasestorage();
          // call the function that gets the returned value(downloaded imageurl from the function uploadimagetofirebasestorage  to this functions)
-         let urlofimg =  await getdownloadedurlafteruploadimage(value);
+         let urlofimg = await  getdownloadedurlafteruploadimage(value);
+         // call the function that uploads the ikmage to firebase storage
+         let value2 =   uploadcertificate();
+         // call the function that gets the returned value(downloaded imageurl from the function uploadimagetofirebasestorage  to this functions)
+         let certificates =  await getdownloadedurlafteruploadimage(value2);
 
         const docRef = await addDoc(
             ref,{
-                
-                fullname:fname.value,
-                lastname:lname.value,
+                id:generate,
+                fullname:fname.value + lname.value,
+                // lastname:lname.value,
                 email:employemail.value,
                 profile_image:urlofimg,
                 age:age.value,
@@ -130,7 +135,7 @@
                 country:country.value,
                 address:address.value,
                 service_type:servicetype.value,
-                certificate:certificate.value,
+                certificate:certificates,
                 experience:exprience.value,
                 // useremail is the company employee is registered or associated from
              
@@ -269,3 +274,60 @@ async function getdownloadedurlafteruploadimage(result){
     return a;
 }
    
+
+// upload certificate
+
+    //  addimage to firebase storeage
+    async function uploadcertificate(){
+        // const ref= app.storage().ref()
+        const file  =  certificate.files[0];
+        const name = new Date() + '-' + file.name;
+        let downloadedimageurl= [];
+        let getdata;
+        let result;
+        // /create child refrence
+        const imageref = ref(storage,`images/${name}`);
+        // file metadata
+        const metadata = {
+            contentType: 'image/jpeg',
+          };
+          
+        // 'file' comes from the Blob or File API
+             await uploadBytes(imageref, file,metadata).then((snapshot) => {
+            
+
+                // const downloadurl = ref().getDownloadURL();
+                console.log('Image Uploaded Successfully');
+            getdata =  getDownloadURL(ref(storage, `images/${name}`))
+                        .then((url) =>  {
+                            // `url` is the download URL for 'images/stars.jpg'
+                           
+                           
+
+                             return downloadedimageurl[0] = url;
+                        })
+                        .catch((error) => {
+                            // Handle any errors
+                             console.log(`error message: ${error}`);
+                        });
+
+                        return downloadedimageurl[0]
+                        
+                    });
+                    
+                   
+                    
+                   result =  getdata;
+
+                  return result
+    }
+
+
+
+
+    // keep track of the email in fields on change
+    const inputHandler = function(e) {
+        console.log(e.target.value);
+        email.value = e.target.value;
+    }
+    employemail.addEventListener('input',inputHandler);

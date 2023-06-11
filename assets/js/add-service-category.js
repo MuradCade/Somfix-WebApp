@@ -83,7 +83,7 @@
                 createddate:added_date.value,
                 update_date:'false',
                 deleted_status:"false",
-                create_by: useremail,
+                create_by: useremail??'admin@example.com',
 
 
         }).then(()=>{

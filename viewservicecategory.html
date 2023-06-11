@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Company | View Company</title>
+    <title>Company | View Service</title>
       <!-- Favicons -->
         <link href="../assets/img/favicon.png" rel="icon">
         <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -17,7 +17,10 @@
         <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
         <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
- 
+        <link href="../assets/vendor/quill/quill.snow.css" rel="stylesheet">
+        <link href="../assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+        <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+        <link href="../assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
         <link href="../assets/css/style.css" rel="stylesheet">
 </head>
@@ -62,7 +65,7 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img  id="profile-img" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2" id="fullname"></span>
+            <span class="d-none d-md-block dropdown-toggle ps-2"id="fullname"></span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -87,8 +90,6 @@
             <li>
               <hr class="dropdown-divider">
             </li>
-           
-
           </ul><!-- End Profile Dropdown Items -->
         </li><!-- End Profile Nav -->
 
@@ -103,60 +104,71 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link" href="dashboard.html" style="background-color: white;">
+        <a class="nav-link " href="dashboard.html"style="background-color:white">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
+
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#"style="background-color: #F6F9FF;">
-          <i class="bi bi-journal-text"></i><span>Employees</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Company</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+         
           <li>
-            <a href="add_employee.html" >
-              <i class="bi bi-circle"></i><span>Add Employee</span>
-            </a>
-          </li>
-          <li>
-            <a href="view_employee.html" style="background-color: #F6F9FF;">
-              <i class="bi bi-circle"></i><span>View Employee</span>
+            <a href="view_company.html">
+              <i class="bi bi-circle"></i><span>View Companies</span>
             </a>
           </li>
         </ul>
-      </li><!-- End Forms Nav -->
+      </li><!-- End Components Nav -->
+
+
+
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#" style="background-color: #F6F9FF;">
           <i class="bi bi-bar-chart"></i><span>Services</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="add_service.html">
-              <i class="bi bi-circle"></i><span>Create Services</span>
-            </a>
-          </li>
-          <li>
-            <a href="view_service.html">
-              <i class="bi bi-circle"></i><span>View Requested Services</span>
-            </a>
-          </li>
-          <li>
-            <a href="service_report.html">
+            <a href="./add-service-category.html">
               <i class="bi bi-circle"></i><span>Create Service Category</span>
             </a>
           </li>
           <li>
-            <a href="viewservicecategory.html">
+            <a href="viewservicecategory.html" style="background-color: #F6F9FF;">
               <i class="bi bi-circle"></i><span>View Service Category</span>
             </a>
           </li>
+    
           <li>
-            <a href="viewbooking.html">
-              <i class="bi bi-circle"></i><span>View Booking</span>
+            <a href="service_report.html">
+              <i class="bi bi-circle"></i><span>View Booked Service</span>
             </a>
           </li>
         </ul>
       </li><!-- End Charts Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-gem"></i><span>Subscriptions</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="add_subscription.html">
+              <i class="bi bi-circle"></i><span>Add Subscriptions</span>
+            </a>
+          </li>
+          <li>
+            <a href="view_subscription.html">
+              <i class="bi bi-circle"></i><span>View Subscriptions</span>
+            </a>
+          </li>
+          
+        </ul>
+      </li><!-- End Icons Nav -->
+
       <li class="nav-heading">Other Information</li>
 
       <li class="nav-item">
@@ -178,7 +190,7 @@
      <!-- !-- End Register Page Nav --> 
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" id="logout">
+        <a class="nav-link collapsed" id="logout" href="#">
           <i class="bi bi-box-arrow-in-right"></i>
           <span>Logout</span>
         </a>
@@ -195,7 +207,6 @@
     </ul>
 
   </aside><!-- End Sidebar-->
-<!-- End Sidebar-->
 
 
   <main id="main" class="main">
@@ -205,55 +216,61 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
-          <li class="breadcrumb-item active">Update Service Category</li>
+          <li class="breadcrumb-item active">View Service Category</li>
         </ol>
       </nav>
     </div>
     <div class="row">
-        <div class="col-xxl-12 col-md-12">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Update Service Category </h5>
-                <div class="mb-4">
-               <form>
-          <p class="p-2 bg-success text-white" id="success-msg" style="display: none;"></p>
-          <p class="p-2 bg-danger text-white" id="error-msg"style="display: none;"></p>
-          <p class="text-center" id="loading"></p>
-          <form>
-            <div class="container mb-3">
-              <label class="form-label"><strong>Service Name</strong></label>
-              <input type="text"  id="servicename" class="form-control" placeholder="Enter Service Category Name...">      
-        </div>
-        <div class="container mb-3">
-              <label class="form-label"><strong>Service Added Date</strong></label>
-              <input type="date" class="form-control" id="added-date">      
-        </div>
-          </form>
-        <div class="text-center mb-3">
-          <button class="btn btn-primary" id="submit">Submit</button>
-        </div>
-               </form>
-                </div>
-              </div>
+      <div class="col-xxl-20 col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">View Service Category</h5>
+          <div class="mb-4">
+            <div class="col-4 d-flex">
+              <input type="text" class="form-control" placeholder="Search by name">
+                  
+              <button class="btn btn-primary" style="position:relative;left:10px;">Search</button>
             </div>
+          </div>
+            <!-- <p>Use contextual classes <code>.table-primary .table-secondary .table-success .table-danger .table-warning .table-info .table-light .table-dark</code> to color tables, table rows or individual cells.</p> -->
+            <!-- Table Variants -->
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="row">#</th>
+                  <th>Service Image</th>
+                  <th>Service Name</th>
+                  <th>Service Added Date</th>   
+                  <th>Action</th>
+                  
+                </tr>
+              </thead>
+              <tbody id="servicecategorydata">
+               
+              </tbody>
+            </table>
+            <!-- End Table Variants -->
     
           </div>
-    </div>
+        </div>
+      </div>
+      <div class="col">
+        <!-- <h4>Search By Category</h4> -->
+      </div>
+     </div>
     </main>
 
 
-
-
-     
-    <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      
     
+      <!-- Template Main JS File -->
+      <script src="../assets/js/main.js"></script>
+      <!-- <script type="module" src="js/add-service-category.js"></script> -->
+      <script type="module" src="assets/js/viewservice-category.js"></script>
+      <script type="module" src="assets/js/profile-topbar.js"></script>
+      <script type="module" src="assets/js/delete-service-category.js"></script>
+      <script type="module" src="js/logout.js"></script>
     
-    <!--   viewdata  JS File -->
-    <script   src="../assets/js/main.js"></script>
-    <script type="module" src="js/profile_data.js"></script>
-  <script  type="module"  src="js/update-single-service-category.js"></script>
-    <script type="module" src="js/logout.js"></script>
-
-
-    </body>
-    </html>
+</body>
+</html>

@@ -145,10 +145,10 @@ async function dispayemployeedatainassignforservice(){
     
     Docsnap.forEach(docs => {
         var option = document.createElement('option');
-        var option2 = document.createElement('option2');
+        // var option2 = document.createElement('option2');
         if(docs.data().company_associated == companyemail){
-            option.text = docs.data().fullname;
-            option2 = docs.data().email
+            option.text = docs.data().email ;
+            // option2 = docs.data().email
             
             assignservice.options.add(option)
             employedata = assignservice.value;
@@ -160,7 +160,7 @@ async function dispayemployeedatainassignforservice(){
 }
 
 
-
+// dispayemployeedatainassignforservice();
 
                     // this function assign employee to booked service - service that create by company and comppany assigned to one of this employees
             

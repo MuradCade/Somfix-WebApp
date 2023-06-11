@@ -43,7 +43,7 @@ let tr = document.querySelector('#displaydata');
         <td>${doc.data().company_phone}</td>
         <td>${doc.data().company_country}</td>
         <td>${doc.data().company_description}</td>
-        <td class='d-flex'><a href="../../singlecompanydetail.html?view=${doc.id}" class='btn btn-primary'>View</a>&numsp;<a href='updatesignlecompanydetails.html?update=${doc.id}' class='btn btn-success'>Update</a>&numsp; <a href='view_company.html?del=${doc.id}' class='btn btn-danger'>Delete</a></td>
+        <td class='d-flex'><a href="../../singlecompanydetail.html?view=${doc.id}" class='btn btn-primary'>View</a>&numsp;</td>
         </tr>
         
     `;
@@ -292,3 +292,4 @@ async function deletesinglecompany(deluid){
 
 
 }
+ViewDatainsideupdateform();

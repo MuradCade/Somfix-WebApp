@@ -1,9 +1,9 @@
    // Import the functions you need from the SDKs you need
    import { initializeApp} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-   import {getFirestore,addDoc,collection,getDocs} from"https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
+   import {getFirestore,addDoc,collection,getDocs,doc,deleteDoc} from"https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
    import {getAuth} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
 
-   import {firebaseConfig} from './firebase.js';
+   import {firebaseConfig} from '../../company/js/firebase.js';
         // firebase intialization
     const app = initializeApp(firebaseConfig);
     
@@ -52,5 +52,7 @@
 
     
 }
+
+
 
 window.onload = viewservicecategory();

@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-import {getFirestore,collection,getDocs,doc} from"https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
+import {getFirestore,collection,getDocs,doc,getDoc} from"https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 import {firebaseConfig} from './firebase.js';
 
      // firebase intialization
@@ -25,7 +25,7 @@ function displaysignleemployedata (){
 
       // intialize input model variables comes fomt view
     let img = document.getElementById("img");
-    let fullname = document.getElementById("fullname");
+    let fullname = document.getElementById("fullnames");
     let age = document.getElementById("age");
     let gender = document.getElementById("gender");
     let dob = document.getElementById("dob");
@@ -48,34 +48,35 @@ function displaysignleemployedata (){
     // function that populates or passes data from db to html element
     async function ViewData(){
         dataloading.innerText = 'data is loading please wait';
-        var ref = collection(db,"employe");
-        const displayselectedcompany = await getDocs(ref);
+        var ref = doc(db,"employe",uid);
+        const displayselectedemploye = await getDoc(ref);
         
-            displayselectedcompany.forEach(doc => {
+            // displayselectedemploye.forEach(doc => {
+                console.log(fullname);
                 // companylogo.innerHTML = `${doc.data()}`;
                 // check if doc.id  from firestore collection equals the uid or(company id)
-                if(doc.id == uid){
-                    img.innerHTML = `<img src="${doc.data().profile_image}" width=80>`
-                    fullname.innerHTML = `${doc.data().fullname}`
-                    employeemail.innerHTML = `${doc.data().email}`
-                    age.innerHTML = `${doc.data().age}`
-                    gender.innerHTML = `${doc.data().gender}`
-                    dob.innerHTML = `${doc.data().dob}`
-                    phone.innerHTML = `${doc.data().phone}`
-                    Country.innerHTML = `${doc.data().country}`
-                    address.innerHTML = `${doc.data().address}`
-                    servicetype.innerHTML = `${doc.data().serivce_category}`
-                    certificate.innerHTML = `${doc.data().certificate}"`
-                    expreince.innerHTML = `${doc.data().experience}`
-                }
-                else{
-                    console.log('error');
-                }
+                // if(doc.id == uid){
+                    img.innerHTML = `<img src="${displayselectedemploye.data().profile_image}" width=80>`
+                    fullname.innerHTML = 'jelp';
+                    employeemail.innerHTML = `${displayselectedemploye.data().email}`
+                    age.innerHTML = `${displayselectedemploye.data().age}`
+                    gender.innerHTML = `${displayselectedemploye.data().gender}`
+                    dob.innerHTML = `${displayselectedemploye.data().dob}`
+                    phone.innerHTML = `${displayselectedemploye.data().phone}`
+                    Country.innerHTML = `${displayselectedemploye.data().country}`
+                    address.innerHTML = `${displayselectedemploye.data().address}`
+                    servicetype.innerHTML = `${displayselectedemploye.data().service_category}`
+                    certificate.innerHTML = `<img  src="${displayselectedemploye.data().certificate}"" width="80"/>`
+                    expreince.innerHTML = `${displayselectedemploye.data().experience}`
+                // }
+                // else{
+                    // console.log('error');
+                // }
                 
                 dataloading.innerText ='';
 
     
-            });
+            // });
        
 
             

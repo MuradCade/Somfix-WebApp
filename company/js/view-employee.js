@@ -1,9 +1,14 @@
    // Import the functions you need from the SDKs you need
    import { initializeApp} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-   import {getFirestore,collection,getDocs,doc,updateDoc} from"https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
+   import {getFirestore,collection,getDocs,doc,updateDoc,deleteDoc} from"https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
+   import {getAuth , 
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
    import {firebaseConfig} from './firebase.js';
 
-        // firebase intialization
+
+   // firebase intialization
     const app = initializeApp(firebaseConfig);
     
         // call the  get database method
@@ -33,7 +38,7 @@ async function Viewemployeedata(){
    try {
    const docSnap = await getDocs(ref);
 // check if collection that we are fetching if its empty excute the else statement
-   if(docSnap.empty){
+   if(docSnap.length){
        // console.log("db isn't empty");
        tr.innerHTML = `<p class='text-center'>There is no data to fetched , please add new data to be displayed</p>`;
     
@@ -42,11 +47,13 @@ async function Viewemployeedata(){
    else{
     tr.innerHTML = '';
    // console.log('Database is not empty');
-   let number = 1;
+   let number = 1;      
+        console.log(docSnap.empty);
+   
    docSnap.forEach(doc => {
+    //   console.log(companyemail);
       
-       
-      if(doc.data().delete_status == "false" && doc.data().company_associated == companyemail){
+           if(doc.data().company_associated == companyemail){
         tr.innerHTML += `
 
         <tr>
@@ -55,14 +62,14 @@ async function Viewemployeedata(){
         <td>${doc.data().fullname}</td>
         <td>${doc.data().age}</td>
         <td>${doc.data().gender}</td>
-        <td>${doc.data().dob??'01-20-2000'}</td>
+        <td>${doc.data().dob}</td>
         <td>${doc.data().phone}</td>
         <td>${doc.data().country}</td>
         <td>${doc.data().address}</td>
-        <td>${doc.data().serivce_category??'Plumber'}</td>
-        <td>${doc.data().certificate ?? 'C:\fakepath\Capture.PNG'}</td>
+        <td>${doc.data().service_category}</td>
+        <td><img src='${doc.data().certificate}' width='80'></td>
         <td>${doc.data().experience}</td>
-        <td>${doc.data().company_associated ?? "hilac@company.com"}</td>
+        <td>${doc.data().company_associated}</td>
         <td class='d-flex'><a href="displaysingleemployeedata.html?view=${doc.id}" class='btn btn-primary'>View</a>&numsp;<a href='updateemployee.html?update=${doc.id}' class='btn btn-success'>Update</a> &numsp;<a href='view_employee.html?delete=${doc.id}' class='btn btn-danger'>Delete</a></td>
         </tr>
         
@@ -71,6 +78,9 @@ async function Viewemployeedata(){
         // tr.innerHTML = 'Empty Table Please Enter Data'
 
       }
+      
+       
+  
       
        number ++;
        
@@ -94,24 +104,25 @@ let url = window.location.search;
 // check if the url contains word update and have id
 let updateurl = url.search('delete');
 
-
 let uid = url.slice(8,28).toString();
-
+// console.log(updateurl);
 if(updateurl == 1){
     async function delete_employee(){
 
-        updateDoc(doc(db,'employe',uid),{
-            delete_status:"true",
-            }).then(()=>{
-                alert('item deleted successfully');
-            }).catch(()=>{
-                console.log('failed to delete');
-                
-            });
+        const docRef  = doc(db,'employe',uid);
+        deleteDoc(docRef).then(() =>{
+                alert('company data  deleted successfully');
+                window.location.href = 'view_employee.html';
+        }).catch((e)=>{
+            alert('failed to delete company data',e);
+        });
     }
      delete_employee();
 }else{
     // console.log(updateurl);
     
 }
+
+
+
 

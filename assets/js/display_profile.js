@@ -27,6 +27,7 @@ let profile = document.getElementById('profile');
 let fullname = document.getElementById('fullname');
 let role = document.getElementById('role');
 
+
 // another form
 let fullname2 = document.getElementById('fullname2');
 let roles = document.getElementById('roles');
@@ -43,31 +44,29 @@ let email = document.getElementById('email');
           useremail = user.email;
           userid = user.uid;
           
-          Displayprofiledata(userid);
-         
-       }
-      });
+          
+        }
+    });
+    
+   Displayprofiledata();
 
 
-
-        // update section form
-        
-        let updatefullname = document.getElementById('updatefullname');
-        let updatePhone = document.getElementById('updatePhone');
-        let updateEmail = document.getElementById('updateEmail');
-        let updatebtn = document.getElementById('updatebtn');
-
-       
-
+    
         // Displayprofiledata();
 
 
 
-
+  // update section form
+        
+  let updatefullname = document.getElementById('updatefullname');
+  let updatePhone = document.getElementById('updatePhone');
+  let updateEmail = document.getElementById('updateEmail');
+  let updatebtn = document.getElementById('updatebtn');
 
 
     //  addimage to firebase storeage
     async function uploadimagetofirebasestorage(){
+
         let uploadprofileimage = document.getElementById('uploadprofileimage');
         // const ref= app.storage().ref()
         const file  =  uploadprofileimage.files[0];
@@ -121,21 +120,26 @@ async function getdownloadedurlafteruploadimage(result){
 }
    
     
-async function Displayprofiledata(id){
+async function Displayprofiledata(){
    
+  
+
+       
 
 
 
-    const docRef = query(collection(db, "Admin"), where("id", "==", id));
+    const docRef = query(collection(db, "Admin"), where("id", "==", 'OZR1MK1v3NcroWos8ukIDbznd8m'));
     const result = await getDocs(docRef);
+
+   
     // console.log(result.data().id);
     result.forEach(docs => {
         // console.log(docs.data().company_name);
 
         // compare the id for company collection to current company account
-      
+            // console.log(full);
             profile.src =`${docs.data().img}`;
-            fullname.innerHTML = `${docs.data().fullname}`;
+            fullname.innerHTML = 'errors';
             // role of the company will be hand coded no need for the db
             role.innerHTML= 'Admin';
 
@@ -183,7 +187,8 @@ async function updatedata(id,img){
 
         }
     ).then(()=>{
-        console.log('Data Updated Successfully');
+        // console.log('Data Updated Successfully');
+        alert('Data Updated Successfully');
     }).catch((error)=>{
             console.log(error);
     });
