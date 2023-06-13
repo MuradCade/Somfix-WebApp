@@ -65,6 +65,7 @@ const auth = getAuth(app);
        <td>$${doc.data().subscription_amount}</td>
        <td>${doc.data().dateandtime}</td>
        <td>${doc.data().subscription_duration} Days</td>
+       <td><a href='payment_report.html' class='btn btn-primary'>View</a></td>
       
      
        </tr>

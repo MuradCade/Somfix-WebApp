@@ -81,17 +81,21 @@ window.onload = ViewData();
     let updateurl = url.search('update');
       // intialize input model variables comes fomt view
       let companyname = document.getElementById('companyname')
-      let email = document.getElementById('email')
-      let companylogo = document.getElementById('companylogo')
-      let companyaddress = document.getElementById('companyaddress')
+    //   let email = document.getElementById('email')
+      let companylogo = document.getElementById('logo')
+      let companyaddress = document.getElementById('address')
       let ceoname = document.getElementById('ceoname')
-      let companyphone = document.getElementById('companyphone')
-      let companycountry = document.getElementById('companycountry')
-      let companydesc = document.getElementById('companydesc')
+      let companyphone = document.getElementById('phone')
+      let companycountry = document.getElementById('country')
+      let companydesc = document.getElementById('desc')
       let update = document.getElementById('update')
 
+      
+
+
+
     //   get the id from url by slicing it  (uid is company id)
-      let uid = url.slice(8,29);
+      let uid = url.slice(6,29);
 
     
 
@@ -99,7 +103,7 @@ window.onload = ViewData();
     
    
       
-    //   console.log(uid);
+    //   console.log('id'+uid);
     
        // read the company collection for particular clicked id (company id)
     async function ViewDatainsideupdateform(){
@@ -109,14 +113,14 @@ window.onload = ViewData();
             // companylogo.innerHTML = `${doc.data()}`;
             // check if doc.id  from firestore collection equals the uid or(company id)
             if(doc.id == uid){
-                        companyname.value = `${doc.data().company_name}`
-                        email.value = `${doc.data().email}`
-                        // companylogo.value = 
-                        companyaddress.value = `${doc.data().company_address}`
-                        ceoname.value = `${doc.data().company_ceo}`
-                        companyphone.value = `${doc.data().company_phone}`
-                        companycountry.value = `${doc.data().company_country}`
-                        companydesc.value = `${doc.data().company_description}`
+                        companyname.innerHTML = `${doc.data().company_name}`
+                        // email.innerHTML = `${doc.data().email}`
+                        companylogo.innerHTML =   `<img  src='${doc.data().company_logo}' width="80"/>` 
+                        companyaddress.innerHTML = `${doc.data().company_address}`
+                        ceoname.innerHTML = `${doc.data().company_ceo}`
+                        companyphone.innerHTML = `${doc.data().company_phone}`
+                        companycountry.innerHTML = `${doc.data().company_country}`
+                        companydesc.innerHTML = `${doc.data().company_description}`
                 // displaycompanylogo.src = `${doc.data().company_logo}`;
                 // companyname.innerHTML = `${doc.data().company_name}`;
                 // ceoname.innerHTML = `${doc.data().company_ceo}`;
@@ -138,7 +142,7 @@ window.onload = ViewData();
     
     // run functions based on web browser
     if(updateurl == 1){
-        console.log(uid);
+        // console.log(uid);
         ViewDatainsideupdateform();
         update.addEventListener('click',function(e){
             e.preventDefault();

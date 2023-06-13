@@ -223,7 +223,7 @@
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
               <img src='' id="profile" class="rounded" width="300"/>
-              <h2 id="fullname"></h2>
+              <h2 id="fullname3"></h2>
               <h3 id="role"></h3>
        
             </div>
@@ -248,9 +248,6 @@
 
             
 
-                <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
-                </li>
 
               </ul>
               <div class="tab-content pt-2">
@@ -332,31 +329,6 @@
                 </div>
 
 
-                <div class="tab-pane fade pt-3" id="profile-change-password">
-                  <!-- Change Password Form -->
-                  <form>
-                      <p id="error-msg" class="p-2 bg-danger text-white" style="display:none;">Error Msg</p>
-                      <p id="success-msg" class="p-2 bg-success text-white" style="display:none;">Success Msg</p>
-                    <div class="row mb-3">
-                      <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="newpassword" type="password" class="form-control" id="newPassword">
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="renewpassword" type="password" class="form-control" id="renewPassword">
-                      </div>
-                    </div>
-
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-primary"id="changepwd">Change Password</button>
-                    </div>
-                  </form><!-- End Change Password Form -->
-
-                </div>
 
               </div><!-- End Bordered Tabs -->
 
@@ -389,7 +361,7 @@
 
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
-  <script type="module" src="js/changepwd.js"></script>
+  <!-- <script type="module" src="js/changepwd.js"></script> -->
   <script type="module" src="js/display_profile_data.js"></script>
   <script type="module" src="js/profile_data.js"></script>
   <script type="module" src="js/logout.js"></script>

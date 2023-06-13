@@ -26,6 +26,7 @@
 let profile = document.getElementById('profile');
 let fullname = document.getElementById('fullname');
 let role = document.getElementById('role');
+let fullname3 = document.getElementById('fullname3');
 
 // another form
 let fullname2 = document.getElementById('fullname2');
@@ -136,6 +137,7 @@ async function Displayprofiledata(id){
         if(docs.data().id == id){
             profile.src =`${docs.data().company_logo}`;
             fullname.innerHTML = `${docs.data().company_name}`;
+            fullname3.innerHTML = `${docs.data().company_name}`;
             // role of the company will be hand coded no need for the db
             role.innerHTML= 'Company';
 
@@ -153,7 +155,13 @@ async function Displayprofiledata(id){
             
                 updatebtn.addEventListener('click',function (e) {
                     e.preventDefault();
-                    updatedata(docs.id,uploadprofileimage.src,updatefullname,updatePhone)
+
+                    if(uploadprofileimage.value == ''){
+                        updatewithdoutimage(docs.id);
+                    }else{
+                        updatewithimage(doc.id);
+                    }
+                    // updatedata(docs.id,uploadprofileimage.src,updatefullname,updatePhone)
                         
                 });
             }
@@ -165,7 +173,29 @@ async function Displayprofiledata(id){
 
 // update function
 
-async function updatedata(id,img){
+async function updatewithdoutimage(id){
+   
+
+     const ref = doc(db, "company", id.toString());
+    await updateDoc(
+        ref,{
+            // company_logo:urlofimg,
+            company_name:updatefullname.value,
+            company_phone:updatePhone.value,
+
+        }
+    ).then(()=>{
+        alert('Data Updated Successfully');
+    }).catch((error)=>{
+            console.log(error);
+    });
+
+    
+
+   
+    }
+
+async function updatewithimage(id){
           // call the function that uploads the ikmage to firebase storage
           let value =   uploadimagetofirebasestorage();
      
@@ -183,7 +213,7 @@ async function updatedata(id,img){
 
         }
     ).then(()=>{
-        console.log('Data Updated Successfully');
+        alert('Data Updated Successfully');
     }).catch((error)=>{
             console.log(error);
     });

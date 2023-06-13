@@ -3,7 +3,7 @@
    import {getFirestore,addDoc,collection,getDocs} from"https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
    import {getAuth} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
 
-   import {firebaseConfig} from './firebase.js';
+   import {firebaseConfig} from '../../company/js/firebase.js';
         // firebase intialization
     const app = initializeApp(firebaseConfig);
     
@@ -19,7 +19,7 @@ let servicename = document.getElementById('servicename');
 let service_added_date = document.getElementById('date');
 let created_by_who = document.getElementById('created_by');
 let loadingmsg = document.getElementById('loading');
-
+let serviceimg = document.getElementById('serviceimg');
 
 
    
@@ -37,6 +37,7 @@ let loadingmsg = document.getElementById('loading');
     displayselectedcompany.forEach(doc => {
         // check if doc.id  from firestore collection equals the uid or(company id)
         if(doc.id == uid){
+            serviceimg.innerHTML = `Service Image: <img src='${doc.data().service_image}' width="80"/>`
             servicename.innerHTML = `Service Name : ${doc.data().servicename}`;
             service_added_date.innerHTML = `Created Date : ${doc.data().createddate}`;
             created_by_who.innerHTML = `Created By : ${doc.data().create_by}`;

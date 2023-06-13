@@ -34,6 +34,7 @@ let dateandtime = document.getElementById('dateandtime');
 let subscription_status = document.getElementById('subscription_status');
 let loading = document.getElementById('loading');
 
+
  
 loading.innerHTML = 'Loading please wait';
  // display subscription data in table

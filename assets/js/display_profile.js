@@ -27,6 +27,9 @@ let profile = document.getElementById('profile');
 let fullname = document.getElementById('fullname');
 let role = document.getElementById('role');
 
+let fullname3 = document.getElementById('fullname3');
+// fullname3.innerHTML = '090';
+
 
 // another form
 let fullname2 = document.getElementById('fullname2');
@@ -139,7 +142,8 @@ async function Displayprofiledata(){
         // compare the id for company collection to current company account
             // console.log(full);
             profile.src =`${docs.data().img}`;
-            fullname.innerHTML = 'errors';
+            fullname3.innerHTML = `${docs.data().fullname}`
+            fullname.innerHTML = `${docs.data().fullname}`
             // role of the company will be hand coded no need for the db
             role.innerHTML= 'Admin';
 
@@ -157,7 +161,16 @@ async function Displayprofiledata(){
             
                 updatebtn.addEventListener('click',function (e) {
                     e.preventDefault();
-                    updatedata(docs.id,uploadprofileimage.src,updatefullname,updatePhone)
+                    // updatedata(docs.id,uploadprofileimage.src,updatefullname,updatePhone)
+
+                    if(uploadprofileimage.value == ''){
+                        updatedatawithoutimage(docs.id);
+                        alert('Profile Updated Successfully');
+                    }else{
+                        // alert('Profile Updated Successfully');
+                        updatedatawithnewselectedimage(docs.id);
+                        // alert('image isnot empty');
+                    }
                         
                 });
             
@@ -169,7 +182,7 @@ async function Displayprofiledata(){
 
 // update function
 
-async function updatedata(id,img){
+async function updatedatawithnewselectedimage(id,img){
           // call the function that uploads the ikmage to firebase storage
           let value =   uploadimagetofirebasestorage();
      
@@ -178,7 +191,7 @@ async function updatedata(id,img){
           //   get the id from url by slicing it  (uid is company id)
   
 
-     const ref = doc(db, "Admin", id.toString());
+     const ref = doc(db, "Admin", 'Cbcq2nC7BOeKrQEDwRTwsB0igaJ3');
     await updateDoc(
         ref,{
             img:urlofimg,
@@ -197,6 +210,30 @@ async function updatedata(id,img){
 
    
     }
+
+
+    
+async function updatedatawithoutimage(id){
+   
+const ref = doc(db, "Admin", 'Cbcq2nC7BOeKrQEDwRTwsB0igaJ3');
+await updateDoc(
+  ref,{
+    //   img:urlofimg,
+      fullname:updatefullname.value,
+      phone:updatePhone.value,
+
+  }
+).then(()=>{
+  // console.log('Data Updated Successfully');
+  alert('Data Updated Successfully');
+}).catch((error)=>{
+      console.log(error);
+});
+
+
+
+
+}
 
 
     
