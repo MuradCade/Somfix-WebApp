@@ -87,7 +87,7 @@ async function veiwbookedserviceses(){
             ${doc.data().servicestatus == 'Pending'?  
             `<a href="viewbooking.html?accept=${doc.id}">Accepted</a><br><a href="viewbooking.html?calcelled=${doc.id}" style='color:red;'>Decline</a>`
             :doc.data().servicestatus  == 'Accepted' ? `<p class='text-success' style='color:green !important;'>${doc.data().servicestatus}</p>`: doc.data().servicestatus == 'Cancelled'?
-            `<p class='text-danger' style='color:red;'>${doc.data().servicestatus}</p>`:doc.data().servicestatus  == 'Completed'?`<p class='text-success' style='color:green;'>Completed</p>`:doc.data().servicestatus  == 'Verified'?`<p class='text-success'>Verified</p>`:console.log()
+            `<p class='text-danger' style='color:red;'>${doc.data().servicestatus}</p>`:doc.data().servicestatus  == 'Completed'?`<p class='text-success' style='color:green;'>Completed</p>`:doc.data().servicestatus  == 'Verified'?`<p class='text-success'>Verified</p>`: doc.data().servicestatus  == 'Assigned' ?`<p  style='color:green;'>${doc.data().servicestatus}</p>`: console.log()
             }             
 
          
